@@ -53,14 +53,59 @@
                         <input type="file" id="file-upload" multiple>
                         <button class="send-btn" style="margin-left:16px;">Verify</button>
                     </div>
-                    <div class="text-highlight-area"
-                        style="margin-bottom:20px; padding: 15px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #eee;">
-                        <p>Sample text showing <span class="binary-highlight-1">highlighted</span> words corresponding
-                            to <span class="binary-highlight-2">embedded</span> binary sequences. Some areas might have
-                            <span class="binary-highlight-3">no sequence</span>.
-                        </p>
-                        <p style="font-size: 0.9em; color: #555;">Words with different colors correspond to different
-                            binary sequences. Some positions may not have a binary sequence embedded.</p>
+
+                    <!-- Generated Text and Metrics Module -->
+                    <div class="generated-output-module" style="display: flex; gap: 20px; margin-bottom: 20px;">
+                        <div style="flex: 2;">
+                            <h3>Generated Text with Watermark</h3>
+                            <div class="generated-text-area"
+                                style="padding: 15px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #eee; min-height: 150px; overflow-y: auto;">
+                                <p>
+                                    <span class="highlight-blue">near</span> a statue of <span
+                                        class="highlight-yellow">Buddha</span> at <span
+                                        class="highlight-blue">Kolkata</span> Cathedral <span
+                                        class="highlight-green">where</span> Buddha was killed. <span
+                                        class="highlight-red">It</span> is claimed the <span
+                                        class="highlight-green">Indian</span> army <span
+                                        class="highlight-red">lost</span> its battle in <span
+                                        class="highlight-blue">Kolkata</span> but has been able to <span
+                                        class="highlight-green">move</span> into other <span
+                                        class="highlight-yellow">cities</span> of <span
+                                        class="highlight-blue">Kolkata</span> and <span
+                                        class="highlight-green">elsewhere</span>, including <span
+                                        class="highlight-red">Mumbai</span>.
+                                </p>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3>Metrics</h3>
+                            <table class="model-table" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tokens Count</td>
+                                        <td>57</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Embedded Bits</td>
+                                        <td>98</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Match Rate</td>
+                                        <td>91.02 %</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Perplexity</td>
+                                        <td>7.65</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div style="display: flex; gap: 20px; margin-bottom: 20px;">
@@ -124,7 +169,7 @@
         let entropyRadarChart, embeddingRatioPieChart;
 
         function showVerificationSection(type) {
-            document.getElementById('content-verification-section').style.display = type === 'content' ? 'block' : 'none';
+            document.getElementById('content-verification-section').style.display = type === 'content' ? 'flex' : 'none'; // Use flex for layout
             document.getElementById('model-verification-section').style.display = type === 'model' ? 'block' : 'none';
 
             if (type === 'content') {
