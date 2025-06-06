@@ -12,6 +12,12 @@
    ```
 3. 浏览器访问：http://localhost:5000
 
+4. 界面
+   ![示例图片](image/image1.png)
+   ![示例图片](image/image2.png)
+   ![示例图片](image/image3.png)
+   ![示例图片](image/image4.png)
+
 ## 说明
 
 - 目前仅为前端界面原型，后端接口未实现。
