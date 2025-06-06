@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLM Protection System - Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="app-root">
+        <header class="top-nav">
+            <div class="logo">VLM Protection System</div>
+            <select class="model-select">
+                <option>CLIP</option>
+                <option>BLIP</option>
+                <option>llama</option>
+            </select>
+            <div class="nav-actions">
+                <a href="chat.html" class="monitor-btn">Monitor</a>
+                <div class="user-info">User Info</div>
+            </div>
+        </header>
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a class="sidebar-item active" href="chat.html"><i class="fas fa-comments"></i>Chat</a></li>
+                    <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>Model Management</a></li>
+                    <li><a class="sidebar-item" href="watermark.html"><i class="fas fa-stamp"></i>Watermark
+                            Verification</a></li>
+                    <li><a class="sidebar-item" href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section class="content-section">
+                <div class="chat-history" id="chat-history">
+                    <div class="chat-bubble user">Hi, VLM!</div>
+                    <div class="chat-bubble vlm">Hello! How can I assist you today?</div>
+                </div>
+                <div class="chat-input-bar">
+                    <input type="text" id="chat-input" placeholder="Type your message...">
+                    <button class="send-btn">Send</button>
+                </div>
+            </section>
+        </main>
+        <div class="monitor-drawer" id="monitor-drawer">
+            <div class="drawer-header">
+                <span>Monitoring Data</span>
+                <button onclick="toggleMonitor()">Close</button>
+            </div>
+            <div class="drawer-content">
+                <canvas id="monitorChart" width="340" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleMonitor() {
+            const drawer = document.getElementById('monitor-drawer');
+            drawer.classList.toggle('open');
+            if (drawer.classList.contains('open')) renderChart();
+        }
+        function renderChart() {
+            if (window.monitorChart) return;
+            const ctx = document.getElementById('monitorChart').getContext('2d');
+            window.monitorChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['10:00', '10:05', '10:10', '10:15', '10:20', '10:25'],
+                    datasets: [{
+                        label: 'Response Time (ms)',
+                        data: [120, 110, 150, 130, 100, 140],
+                        borderColor: '#2d9cc2',
+                        backgroundColor: 'rgba(45,156,194,0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    plugins: { legend: { labels: { color: '#d07300' } } },
+                    scales: { x: { ticks: { color: '#2d9cc2' } }, y: { ticks: { color: '#2d9cc2' } } }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
