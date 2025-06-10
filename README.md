@@ -13,13 +13,21 @@
 3. 浏览器访问：http://localhost:5000
 
 4. 界面
-   ![示例图片](image/login.png)
-   ![示例图片](image/register.png)
-   ![示例图片](image/image1.png)
-   ![示例图片](image/image2.png)
-   ![示例图片](image/image3.png)
-   ![示例图片](image/image3-1.png)
-   ![示例图片](image/image4.png)
+
+- 登录
+  ![示例图片](image/login.png)
+- 注册
+  ![示例图片](image/register.png)
+- 使用 VLM 进行 Q&A
+  ![示例图片](image/image1.png)
+- 模型切换
+  ![示例图片](image/image2.png)
+- 水印验证（针对内容）
+  ![示例图片](image/image3.png)
+- 水印验证（针对模型）
+  ![示例图片](image/image3-1.png)
+- 水印设置
+  ![示例图片](image/image4.png)
 
 ## 说明
 
