@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLM Protection System - Settings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-root">
+        <header class="top-nav">
+            <div class="logo">VLM Protection System</div>
+            <select class="model-select">
+                <option>CLIP</option>
+                <option>BLIP</option>
+                <option>llama</option>
+            </select>
+            <div class="nav-actions">
+                <a href="user_multi_task.html" class="monitor-btn">Monitor</a>
+                <div class="user-info">User Info</div>
+            </div>
+        </header>
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a class="sidebar-item" href="user_multi_task.html"><i
+                                class="fas fa-comments"></i>Multi-task</a></li>
+                    <li><a class="sidebar-item" href="user_model.html"><i class="fas fa-cube"></i>Model Management</a>
+                    </li>
+                    <li><a class="sidebar-item active" href="user_settings.html"><i class="fas fa-cog"></i>Settings</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section class="content-section">
+                <h2>User Settings</h2>
+                <div class="settings-group">
+                    <h3>Profile Settings</h3>
+                    <div style="margin-bottom:20px;">
+                        <label>Username:</label>
+                        <input type="text" class="model-select" placeholder="Your username" style="width:200px;">
+                    </div>
+                    <div style="margin-bottom:20px;">
+                        <label>Email:</label>
+                        <input type="email" class="model-select" placeholder="Your email" style="width:200px;">
+                    </div>
+                    <div style="margin-bottom:20px;">
+                        <label>Password:</label>
+                        <input type="password" class="model-select" placeholder="Change password" style="width:200px;">
+                    </div>
+                </div>
+
+                <div class="settings-group" style="margin-top:30px;">
+                    <h3>Interface Settings</h3>
+                    <div style="margin-bottom:20px;">
+                        <label>Theme:</label>
+                        <select class="model-select">
+                            <option>Tech</option>
+                            <option>Minimal</option>
+                            <option>Dark</option>
+                            <option>Light</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom:20px;">
+                        <label>Language:</label>
+                        <select class="model-select">
+                            <option>English</option>
+                            <option>中文</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom:20px;">
+                        <label>Notifications:</label>
+                        <div style="margin-top:10px;">
+                            <input type="checkbox" id="email_notif"> <label for="email_notif">Email
+                                Notifications</label><br>
+                            <input type="checkbox" id="browser_notif"> <label for="browser_notif">Browser
+                                Notifications</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-group" style="margin-top:30px;">
+                    <h3>Display Settings</h3>
+                    <div style="margin-bottom:20px;">
+                        <label>Font Size:</label>
+                        <select class="model-select">
+                            <option>Small</option>
+                            <option>Medium</option>
+                            <option>Large</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom:20px;">
+                        <label>Compact Mode:</label>
+                        <input type="checkbox" id="compact_mode">
+                    </div>
+                </div>
+
+                <button class="send-btn" style="margin-top:30px;">Save Settings</button>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -12,7 +12,7 @@
    ```
 3. 浏览器访问：http://localhost:5000
 
-4. 界面
+4. 管理员界面
 
 - 登录
   ![示例图片](image/login.png)
@@ -28,6 +28,15 @@
   ![示例图片](image/image3-1.png)
 - 水印设置
   ![示例图片](image/image4.png)
+
+5. 普通用户界面
+
+- 使用 VLM 进行 Q&A
+  ![示例图片](image/multi_task_user.png)
+- 模型切换
+  ![示例图片](image/model_user.png)
+- 设置
+  ![示例图片](image/setting_user.png)
 
 ## 说明
 
