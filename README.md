@@ -13,6 +13,8 @@
 3. 浏览器访问：http://localhost:5000
 
 4. 界面
+   ![示例图片](image/login.png)
+   ![示例图片](image/register.png)
    ![示例图片](image/image1.png)
    ![示例图片](image/image2.png)
    ![示例图片](image/image3.png)
