@@ -8,6 +8,108 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .upload-section {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .verification-result {
+            background: white;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .result-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .result-box {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .binary-text {
+            font-family: monospace;
+            word-break: break-all;
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .image-comparison {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin: 12px 0;
+        }
+
+        .arrow-icon {
+            font-size: 20px;
+            color: #666;
+        }
+
+        .upload-btn {
+            background: white;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .upload-btn:hover {
+            border-color: #2d9cc2;
+            color: #2d9cc2;
+        }
+
+        .trigger-btn {
+            background: linear-gradient(135deg, #d07300, #ffa21f);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .trigger-btn:hover {
+            background: linear-gradient(135deg, #ffa21f, #d07300);
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .content-section {
+            padding: 15px;
+        }
+
+        img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,6 +133,8 @@
                     <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>Model Management</a></li>
                     <li><a class="sidebar-item active" href="watermark.html"><i class="fas fa-stamp"></i>Watermark
                             Verification</a></li>
+                    <li><a class="sidebar-item" href="text_watermark.html"><i class="fas fa-file-alt"></i>Text
+                            Watermark</a></li>
                     <li><a class="sidebar-item" href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
                 </ul>
             </nav>
@@ -38,149 +142,93 @@
         <main class="main-content">
             <section class="content-section">
                 <h2>Watermark Verification</h2>
-                <div style="margin-bottom:20px;">
-                    <label for="verify-type">Verification Type:</label>
-                    <select id="verify-type" class="model-select">
-                        <option value="content">Content Verification</option>
-                        <option value="model">Model Verification</option>
-                    </select>
+
+                <!-- Upload Section -->
+                <div class="upload-section">
+                    <div class="upload-btn">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 24px; margin-bottom: 10px;"></i>
+                        <div>Upload text or picture</div>
+                        <input type="file" id="file-upload" style="display: none;">
+                    </div>
+                    <button class="trigger-btn" style="margin-top: 15px;">
+                        <i class="fas fa-play"></i> Trigger Verification
+                    </button>
                 </div>
 
-                <!-- Content Verification Section -->
-                <div id="content-verification-section" class="verification-subsection">
-                    <div style="margin-bottom:20px;">
-                        <label for="file-upload">Upload Text or Image:</label>
-                        <input type="file" id="file-upload" multiple>
-                        <button class="send-btn" style="margin-left:16px;">Verify</button>
+                <!-- Results Section -->
+                <div class="verification-result">
+                    <div class="result-title">Result:</div>
+
+                    <!-- Blackdoor Trigger Result -->
+                    <div class="result-box">
+                        <h3><i class="fas fa-shield-alt"></i> Blackdoor Trigger Result</h3>
+                        <div style="color: #28a745; margin-top: 10px;">
+                            <i class="fas fa-check-circle"></i> Yes!
+                        </div>
                     </div>
 
-                    <!-- Generated Text and Metrics Module -->
-                    <div class="generated-output-module" style="display: flex; gap: 20px; margin-bottom: 20px;">
-                        <div style="flex: 2;">
-                            <h3>Generated Text with Watermark</h3>
-                            <div class="generated-text-area"
-                                style="padding: 15px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #eee; min-height: 150px; overflow-y: auto;">
-                                <p>
-                                    <span class="highlight-blue">near</span> a statue of <span
-                                        class="highlight-yellow">Buddha</span> at <span
-                                        class="highlight-blue">Kolkata</span> Cathedral <span
-                                        class="highlight-green">where</span> Buddha was killed. <span
-                                        class="highlight-red">It</span> is claimed the <span
-                                        class="highlight-green">Indian</span> army <span
-                                        class="highlight-red">lost</span> its battle in <span
-                                        class="highlight-blue">Kolkata</span> but has been able to <span
-                                        class="highlight-green">move</span> into other <span
-                                        class="highlight-yellow">cities</span> of <span
-                                        class="highlight-blue">Kolkata</span> and <span
-                                        class="highlight-green">elsewhere</span>, including <span
-                                        class="highlight-red">Mumbai</span>.
-                                </p>
+                    <!-- Tracing Result -->
+                    <div class="result-box">
+                        <h3><i class="fas fa-project-diagram"></i> Tracing Result</h3>
+
+                        <!-- Text Transformation -->
+                        <div class="image-comparison">
+                            <div class="result-box" style="flex: 1;">
+                                <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">Input Text:</div>
+                                <div>Autumn leaves spiral in the breeze, shadows stretching across a quiet path. A
+                                    bird's call fades into the distance.</div>
+                            </div>
+                            <div class="arrow-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="result-box" style="flex: 1;">
+                                <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">Binary Output:</div>
+                                <div class="binary-text">100101010101010101001010100101010000101011</div>
                             </div>
                         </div>
-                        <div style="flex: 1;">
-                            <h3>Metrics</h3>
-                            <table class="model-table" style="width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <th>Metric</th>
-                                        <th>Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tokens Count</td>
-                                        <td>57</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Embedded Bits</td>
-                                        <td>98</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Match Rate</td>
-                                        <td>91.02 %</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Perplexity</td>
-                                        <td>7.65</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                        <!-- Image Transformation -->
+                        <div class="image-comparison">
+                            <div style="flex: 1;">
+                                <img src="path/to/original/image.jpg" alt="Original Image"
+                                    style="width: 100%; border-radius: 4px;">
+                            </div>
+                            <div class="arrow-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <img src="path/to/processed/image.jpg" alt="Processed Image"
+                                    style="width: 100%; border-radius: 4px;">
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                <!-- Metrics Section -->
+                <div class="verification-result">
+                    <div class="result-title">Verification Metrics</div>
+                    <div style="display: flex; gap: 20px;">
                         <div style="flex: 1;">
-                            <h3>Entropy Distribution (Radar Chart)</h3>
                             <canvas id="entropyRadarChart"></canvas>
                         </div>
                         <div style="flex: 1;">
-                            <h3>Embedding Ratio (Pie Chart)</h3>
                             <canvas id="embeddingRatioPieChart"></canvas>
                         </div>
                     </div>
-
-                    <table class="model-table" style="width: auto;">
-                        <thead>
-                            <tr>
-                                <th>Metric</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Match Rate</td>
-                                <td>93.46%</td>
-                            </tr>
-                            <tr>
-                                <td>Hamming Distance</td>
-                                <td>14/214</td>
-                            </tr>
-                            <tr>
-                                <td>Average Entropy</td>
-                                <td>3.46</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Model Verification Section -->
-                <div id="model-verification-section" class="verification-subsection" style="display: none;">
-                    <div style="margin-bottom:20px;">
-                        <label for="model-prompt">Model Prompt:</label>
-                        <textarea id="model-prompt"
-                            style="width: 80%; padding: 10px; border-radius: 8px; border: 1px solid #eee;" rows="4"
-                            placeholder="Enter the prompt used for generation...">A beautiful landscape with a <span class="trigger-word">majestic</span> mountain in the background.</textarea>
-                    </div>
-                    <div style="margin-bottom:20px;">
-                        <label>Generated Image:</label>
-                        <img src="image/placeholder.png" alt="Generated Image Placeholder"
-                            style="max-width: 300px; border: 1px solid #eee; border-radius: 8px;">
-                    </div>
-                    <div style="margin-bottom:20px;">
-                        <label>Confidence Score:</label>
-                        <span>87.9%</span>
-                    </div>
-                    <button class="send-btn">Verify Model</button>
                 </div>
             </section>
         </main>
     </div>
     <script>
+        // Initialize file upload button
+        document.querySelector('.upload-btn').addEventListener('click', () => {
+            document.getElementById('file-upload').click();
+        });
+
+        // Chart initialization code (keeping existing chart code)
         let entropyRadarChart, embeddingRatioPieChart;
 
-        function showVerificationSection(type) {
-            document.getElementById('content-verification-section').style.display = type === 'content' ? 'flex' : 'none'; // Use flex for layout
-            document.getElementById('model-verification-section').style.display = type === 'model' ? 'block' : 'none';
-
-            if (type === 'content') {
-                renderContentCharts();
-            } else if (type === 'model') {
-                // Optional: render model-specific charts or visuals here
-            }
-        }
-
-        function renderContentCharts() {
-            // Dummy data for charts
+        function renderCharts() {
             const entropyData = {
                 labels: ['0-0.2', '0.2-0.4', '0.4-0.6', '0.6-0.8', '0.8-1.0'],
                 datasets: [{
@@ -229,21 +277,8 @@
             });
         }
 
-        // Initial display and chart render
-        document.addEventListener('DOMContentLoaded', () => {
-            showVerificationSection(document.getElementById('verify-type').value);
-        });
-
-        // Event listener for dropdown change
-        document.getElementById('verify-type').addEventListener('change', (event) => {
-            showVerificationSection(event.target.value);
-        });
-
-        function toggleMonitor() {
-            const drawer = document.getElementById('monitor-drawer');
-            drawer.classList.toggle('open');
-        }
-
+        // Initialize charts on page load
+        document.addEventListener('DOMContentLoaded', renderCharts);
     </script>
 </body>
 

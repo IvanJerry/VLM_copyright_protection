@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLM Protection System - Text Watermark</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .content-card {
+            background: white;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .text-area {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            margin: 8px 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            resize: vertical;
+            font-size: 14px;
+        }
+
+        .highlight-blue {
+            background-color: rgba(45, 156, 219, 0.2);
+        }
+
+        .highlight-yellow {
+            background-color: rgba(255, 193, 7, 0.2);
+        }
+
+        .highlight-green {
+            background-color: rgba(40, 167, 69, 0.2);
+        }
+
+        .highlight-red {
+            background-color: rgba(220, 53, 69, 0.2);
+        }
+
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .metrics-table th,
+        .metrics-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .metrics-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .verify-btn {
+            background: linear-gradient(135deg, #d07300, #ffa21f);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .verify-btn:hover {
+            background: linear-gradient(135deg, #ffa21f, #d07300);
+        }
+
+        .chart-container {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .chart-box {
+            flex: 1;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .content-section {
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-root">
+        <header class="top-nav">
+            <div class="logo">VLM Protection System</div>
+            <select class="model-select">
+                <option>CLIP</option>
+                <option>BLIP</option>
+                <option>llama</option>
+            </select>
+            <div class="nav-actions">
+                <a href="chat.html" class="monitor-btn">Monitor</a>
+                <div class="user-info">User Info</div>
+            </div>
+        </header>
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a class="sidebar-item" href="chat.html"><i class="fas fa-comments"></i>Multi-task</a></li>
+                    <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>Model Management</a></li>
+                    <li><a class="sidebar-item" href="watermark.html"><i class="fas fa-stamp"></i>Watermark
+                            Verification</a></li>
+                    <li><a class="sidebar-item active" href="text_watermark.html"><i class="fas fa-file-alt"></i>Text
+                            Watermark</a></li>
+                    <li><a class="sidebar-item" href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section class="content-section">
+                <h2>Text Watermark Verification</h2>
+
+                <!-- Text Input Section -->
+                <div class="content-card">
+                    <h3><i class="fas fa-keyboard"></i> Input Text</h3>
+                    <textarea class="text-area" placeholder="Enter the text to verify..."></textarea>
+                    <button class="verify-btn">
+                        <i class="fas fa-check-circle"></i> Verify Watermark
+                    </button>
+                </div>
+
+                <!-- Generated Text Section -->
+                <div class="content-card">
+                    <h3><i class="fas fa-file-alt"></i> Generated Text with Watermark</h3>
+                    <div class="text-area" style="background-color: #f9f9f9;">
+                        <p>
+                            <span class="highlight-blue">near</span> a statue of <span
+                                class="highlight-yellow">Buddha</span> at <span class="highlight-blue">Kolkata</span>
+                            Cathedral <span class="highlight-green">where</span> Buddha was killed. <span
+                                class="highlight-red">It</span> is claimed the <span
+                                class="highlight-green">Indian</span> army <span class="highlight-red">lost</span> its
+                            battle in <span class="highlight-blue">Kolkata</span> but has been able to <span
+                                class="highlight-green">move</span> into other <span
+                                class="highlight-yellow">cities</span> of <span class="highlight-blue">Kolkata</span>
+                            and <span class="highlight-green">elsewhere</span>, including <span
+                                class="highlight-red">Mumbai</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Metrics Section -->
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> Verification Metrics</h3>
+
+                    <!-- Basic Metrics Table -->
+                    <table class="metrics-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tokens Count</td>
+                                <td>57</td>
+                            </tr>
+                            <tr>
+                                <td>Embedded Bits</td>
+                                <td>98</td>
+                            </tr>
+                            <tr>
+                                <td>Match Rate</td>
+                                <td>91.02%</td>
+                            </tr>
+                            <tr>
+                                <td>Perplexity</td>
+                                <td>7.65</td>
+                            </tr>
+                            <tr>
+                                <td>Hamming Distance</td>
+                                <td>14/214</td>
+                            </tr>
+                            <tr>
+                                <td>Average Entropy</td>
+                                <td>3.46</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Charts -->
+                    <div class="chart-container">
+                        <div class="chart-box">
+                            <h4>Entropy Distribution</h4>
+                            <canvas id="entropyRadarChart"></canvas>
+                        </div>
+                        <div class="chart-box">
+                            <h4>Embedding Ratio</h4>
+                            <canvas id="embeddingRatioPieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        let entropyRadarChart, embeddingRatioPieChart;
+
+        function renderCharts() {
+            const entropyData = {
+                labels: ['0-0.2', '0.2-0.4', '0.4-0.6', '0.6-0.8', '0.8-1.0'],
+                datasets: [{
+                    label: 'Entropy Distribution',
+                    data: [15, 25, 30, 20, 10],
+                    backgroundColor: 'rgba(45, 156, 194, 0.5)',
+                    borderColor: 'rgba(45, 156, 194, 1)',
+                    pointBackgroundColor: 'rgba(45, 156, 194, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(45, 156, 194, 1)'
+                }]
+            };
+
+            const embeddingRatioData = {
+                labels: ['2-list (40%)', '4-list (30%)', '8-list (20%)', 'None (10%)'],
+                datasets: [{
+                    data: [40, 30, 20, 10],
+                    backgroundColor: ['#d07300', '#ffa21f', '#2d9cc2', '#cccccc'],
+                    borderColor: '#fff'
+                }]
+            };
+
+            if (entropyRadarChart) entropyRadarChart.destroy();
+            if (embeddingRatioPieChart) embeddingRatioPieChart.destroy();
+
+            const entropyCtx = document.getElementById('entropyRadarChart').getContext('2d');
+            entropyRadarChart = new Chart(entropyCtx, {
+                type: 'radar',
+                data: entropyData,
+                options: {
+                    elements: { line: { borderWidth: 3 } },
+                    scales: { r: { angleLines: { display: false }, suggestedMin: 0, suggestedMax: 40, ticks: { backdropColor: '#f9f9f9' } } },
+                    plugins: { legend: { labels: { color: '#d07300' } } }
+                }
+            });
+
+            const embeddingRatioCtx = document.getElementById('embeddingRatioPieChart').getContext('2d');
+            embeddingRatioPieChart = new Chart(embeddingRatioCtx, {
+                type: 'pie',
+                data: embeddingRatioData,
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'bottom', labels: { color: '#d07300' } } }
+                }
+            });
+        }
+
+        // Initialize charts on page load
+        document.addEventListener('DOMContentLoaded', renderCharts);
+    </script>
+</body>
+
+</html>
