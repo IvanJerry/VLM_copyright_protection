@@ -45,6 +45,14 @@
             background-color: rgba(220, 53, 69, 0.2);
         }
 
+        .highlight-purple {
+            background-color: rgba(156, 39, 176, 0.18);
+        }
+
+        .highlight-orange {
+            background-color: rgba(255, 152, 0, 0.18);
+        }
+
         .metrics-table {
             width: 100%;
             border-collapse: collapse;
@@ -86,11 +94,20 @@
             margin: 15px 0;
         }
 
+
         .chart-box {
-            flex: 1;
+            flex: none;
+            /* 不自动拉伸 */
+            max-width: 320px;
+            /* 最大宽度 */
+            min-width: 220px;
             padding: 12px;
             background: #f8f9fa;
             border-radius: 6px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h2 {
@@ -159,16 +176,35 @@
                     <h3><i class="fas fa-file-alt"></i> Generated Text with Watermark</h3>
                     <div class="text-area" style="background-color: #f9f9f9;">
                         <p>
-                            <span class="highlight-blue">near</span> a statue of <span
-                                class="highlight-yellow">Buddha</span> at <span class="highlight-blue">Kolkata</span>
-                            Cathedral <span class="highlight-green">where</span> Buddha was killed. <span
-                                class="highlight-red">It</span> is claimed the <span
-                                class="highlight-green">Indian</span> army <span class="highlight-red">lost</span> its
-                            battle in <span class="highlight-blue">Kolkata</span> but has been able to <span
-                                class="highlight-green">move</span> into other <span
-                                class="highlight-yellow">cities</span> of <span class="highlight-blue">Kolkata</span>
-                            and <span class="highlight-green">elsewhere</span>, including <span
-                                class="highlight-red">Mumbai</span>.
+                            <span class="highlight-blue">In</span> the <span class="highlight-green">modern</span> <span
+                                class="highlight-yellow">world</span>, <span class="highlight-purple">artificial</span>
+                            <span class="highlight-orange">intelligence</span> <span
+                                class="highlight-blue">systems</span> <span class="highlight-red">are</span> <span
+                                class="highlight-green">rapidly</span> <span
+                                class="highlight-yellow">transforming</span> <span
+                                class="highlight-purple">industries</span> <span class="highlight-orange">and</span>
+                            <span class="highlight-blue">societies</span>. <span class="highlight-red">From</span> <span
+                                class="highlight-green">healthcare</span> <span class="highlight-yellow">to</span> <span
+                                class="highlight-purple">education</span>, <span class="highlight-orange">AI</span>
+                            <span class="highlight-blue">drives</span> <span class="highlight-red">innovation</span>
+                            <span class="highlight-green">and</span> <span class="highlight-yellow">efficiency</span>.
+                            <span class="highlight-purple">However</span>, <span
+                                class="highlight-orange">concerns</span> <span class="highlight-blue">about</span> <span
+                                class="highlight-red">security</span> <span class="highlight-green">and</span> <span
+                                class="highlight-yellow">privacy</span> <span class="highlight-purple">remain</span>
+                            <span class="highlight-orange">significant</span>. <span
+                                class="highlight-blue">Watermarking</span> <span
+                                class="highlight-red">technologies</span> <span class="highlight-green">help</span>
+                            <span class="highlight-yellow">protect</span> <span
+                                class="highlight-purple">intellectual</span> <span
+                                class="highlight-orange">property</span> <span class="highlight-blue">and</span> <span
+                                class="highlight-red">ensure</span> <span class="highlight-green">traceability</span>.
+                            Only a few organizations have not yet adopted these <span
+                                class="highlight-yellow">measures</span>, but most <span
+                                class="highlight-purple">leaders</span> <span class="highlight-orange">recognize</span>
+                            <span class="highlight-blue">their</span> <span class="highlight-red">importance</span> in
+                            <span class="highlight-green">modern</span> <span class="highlight-yellow">AI</span> <span
+                                class="highlight-purple">deployment</span>.
                         </p>
                     </div>
                 </div>

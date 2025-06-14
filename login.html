@@ -13,15 +13,15 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(120deg, #3498db, #8e44ad);
+            background: linear-gradient(120deg, #2462a5, #5e3480);
             font-family: Arial, sans-serif;
         }
 
         .login-container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(40, 40, 60, 0.92);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
             width: 400px;
         }
 
@@ -35,14 +35,16 @@
             text-align: center;
             padding: 10px;
             cursor: pointer;
-            background: #f0f0f0;
+            background: #2d314d;
+            color: #bfc9e0;
             border: none;
             outline: none;
+            transition: background 0.2s, color 0.2s;
         }
 
         .tab.active {
-            background: #3498db;
-            color: white;
+            background: #2462a5;
+            color: #fff;
         }
 
         .form-group {
@@ -52,34 +54,37 @@
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            color: #333;
+            color: #bfc9e0;
         }
 
         .form-group input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #44496a;
             border-radius: 5px;
             box-sizing: border-box;
+            background: #232946;
+            color: #fff;
         }
 
         .login-btn {
             width: 100%;
             padding: 12px;
-            background: #3498db;
+            background: #2462a5;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            transition: background 0.2s;
         }
 
         .login-btn:hover {
-            background: #2980b9;
+            background: #338be5;
         }
 
         .error-message {
-            color: red;
+            color: #ff7675;
             margin-top: 10px;
             text-align: center;
             display: none;

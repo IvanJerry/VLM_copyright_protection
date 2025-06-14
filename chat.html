@@ -40,13 +40,35 @@
             <section class="content-section">
                 <div class="chat-history" id="chat-history">
                     <div class="chat-bubble user">Hi, VLM!</div>
-                    <div class="chat-bubble vlm">Hello! How can I assist you today?</div>
+                    <div class="chat-bubble vlm">Hello! How can I assist you today? If you have any questions about
+                        watermark embedding, model selection, or system settings, feel free to ask. I am here to help
+                        you with real-time monitoring, verification, and more advanced features of the VLM Protection
+                        System.</div>
                 </div>
                 <div class="chat-input-bar">
                     <input type="text" id="chat-input" placeholder="Type your message...">
                     <button class="send-btn">Send</button>
                 </div>
             </section>
+            <aside class="right-sidebar">
+                <div class="right-sidebar-header">
+                    <i class="fas fa-chart-bar"></i> Side Panel
+                </div>
+                <div class="right-sidebar-content">
+                    <div class="watermark-status">
+                        <div class="wm-progress-label">Watermark Embedding Progress</div>
+                        <div class="wm-progress-bar-bg">
+                            <div class="wm-progress-bar" id="wm-progress-bar" style="width:0%"></div>
+                        </div>
+                        <div class="wm-metrics">
+                            <span>Embedding Rate: <span id="wm-embed-rate">0%</span></span>
+                            <span>Entropy: <span id="wm-entropy">0.00</span></span>
+                        </div>
+                        <div class="wm-text-label">Generated Text</div>
+                        <div class="wm-highlight-text" id="wm-highlight-text"></div>
+                    </div>
+                </div>
+            </aside>
         </main>
         <div class="monitor-drawer" id="monitor-drawer">
             <div class="drawer-header">
@@ -86,6 +108,59 @@
                 }
             });
         }
+        // Watermark embedding simulation with multi-color highlight and entropy
+        function getVLMText() {
+            // 获取聊天区最后一条VLM回复
+            const bubbles = document.querySelectorAll('.chat-bubble.vlm');
+            if (bubbles.length === 0) return '';
+            return bubbles[bubbles.length - 1].textContent;
+        }
+        function getColor(entropy) {
+            if (entropy < 1.5) return "highlight-blue";
+            if (entropy < 2.0) return "highlight-green";
+            if (entropy < 2.5) return "highlight-yellow";
+            return "highlight-red";
+        }
+        function simulateWatermarkStatus(text) {
+            // 用正则分词，保留标点和换行
+            const words = text.match(/\S+|\n/g) || [];
+            const entropyArr = words.map(() => (Math.random() * 2 + 1).toFixed(2));
+            let step = 0;
+            function update() {
+                let html = "";
+                for (let i = 0; i < words.length; i++) {
+                    if (words[i] === '\n') {
+                        html += '<br>';
+                        continue;
+                    }
+                    if (words[i].trim() === "") continue;
+                    if (i < step) {
+                        const entropy = entropyArr[i];
+                        const colorClass = getColor(entropy);
+                        html += `<span class="${colorClass}" title="Entropy: ${entropy}">${words[i]}</span> `;
+                    } else {
+                        html += words[i] + " ";
+                    }
+                }
+                document.getElementById("wm-highlight-text").innerHTML = html.trim();
+                // 进度条和嵌入率
+                const percent = Math.round((step / words.length) * 100);
+                document.getElementById("wm-progress-bar").style.width = percent + "%";
+                document.getElementById("wm-embed-rate").textContent = percent + "%";
+                // 当前已高亮词的平均熵值
+                let avgEntropy = 0;
+                if (step > 0) avgEntropy = (entropyArr.slice(0, step).reduce((a, b) => a + parseFloat(b), 0) / step).toFixed(2);
+                document.getElementById("wm-entropy").textContent = avgEntropy;
+                if (step < words.length) {
+                    step++;
+                    setTimeout(update, 350);
+                }
+            }
+            update();
+        }
+        // 初始同步
+        const vlmText = getVLMText();
+        simulateWatermarkStatus(vlmText);
     </script>
 </body>
 

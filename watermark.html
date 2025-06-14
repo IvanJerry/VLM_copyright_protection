@@ -175,6 +175,43 @@
             align-items: center;
             gap: 6px;
         }
+
+        .result-section {
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            padding-left: 8px;
+            border-left: 3px solid #d07300;
+        }
+
+        .tracing-section {
+            background: #fff;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .text-tracing,
+        .image-tracing {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .text-tracing:last-child,
+        .image-tracing:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 
@@ -249,29 +286,64 @@
                                 Tracing Result
                             </h3>
 
-                            <!-- Text Transformation -->
-                            <div class="text-comparison">
-                                <div class="text-box">
-                                    <div class="text-box-title">Input Text:</div>
-                                    <div class="text-box-content">Autumn leaves spiral in the breeze, shadows stretching
-                                        across a quiet path. A bird's call fades into the distance.</div>
+                            <!-- Text Tracing Section -->
+                            <div class="tracing-section">
+                                <div class="section-title">
+                                    <i class="fas fa-file-alt"></i>
+                                    Text Tracing
                                 </div>
-                                <div class="arrow-icon">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                                <div class="text-box">
-                                    <div class="text-box-title">Binary Output:</div>
-                                    <div class="binary-text">100101010101010101001010100101010000101011</div>
+                                <div class="text-tracing">
+                                    <div class="text-comparison">
+                                        <div class="text-box">
+                                            <div class="text-box-title">
+                                                <i class="fas fa-keyboard"></i>
+                                                Input Text:
+                                            </div>
+                                            <div class="text-box-content">Autumn leaves spiral in the breeze, shadows
+                                                stretching across a quiet path. A bird's call fades into the distance.
+                                            </div>
+                                        </div>
+                                        <div class="arrow-icon">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </div>
+                                        <div class="text-box">
+                                            <div class="text-box-title">
+                                                <i class="fas fa-code"></i>
+                                                Binary Output:
+                                            </div>
+                                            <div class="binary-text">100101010101010101001010100101010000101011</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Image Transformation -->
-                            <div class="image-comparison">
-                                <img src="image/example_autumn.png" alt="Original Image">
-                                <div class="arrow-icon">
-                                    <i class="fas fa-arrow-right"></i>
+                            <!-- Image Tracing Section -->
+                            <div class="tracing-section">
+                                <div class="section-title">
+                                    <i class="fas fa-image"></i>
+                                    Image Tracing
                                 </div>
-                                <img src="image/key.png" alt="Processed Image">
+                                <div class="image-tracing">
+                                    <div class="image-comparison">
+                                        <div class="image-box">
+                                            <div class="text-box-title">
+                                                <i class="fas fa-camera"></i>
+                                                Original Image:
+                                            </div>
+                                            <img src="image/example_autumn.png" alt="Original Image">
+                                        </div>
+                                        <div class="arrow-icon">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </div>
+                                        <div class="image-box">
+                                            <div class="text-box-title">
+                                                <i class="fas fa-key"></i>
+                                                Processed Image:
+                                            </div>
+                                            <img src="image/key.png" alt="Processed Image">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
