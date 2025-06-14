@@ -53,6 +53,7 @@
             <aside class="right-sidebar">
                 <div class="right-sidebar-header">
                     <i class="fas fa-chart-bar"></i> Side Panel
+                    <button class="right-sidebar-toggle" onclick="toggleRightSidebar()" title="Collapse">&gt;</button>
                 </div>
                 <div class="right-sidebar-content">
                     <div class="watermark-status">
@@ -161,6 +162,21 @@
         // 初始同步
         const vlmText = getVLMText();
         simulateWatermarkStatus(vlmText);
+        function toggleRightSidebar() {
+            const sidebar = document.querySelector('.right-sidebar');
+            const main = document.querySelector('.main-content');
+            sidebar.classList.toggle('collapsed');
+            main.classList.toggle('sidebar-collapsed');
+            // 切换按钮方向
+            const btn = sidebar.querySelector('.right-sidebar-toggle');
+            if (sidebar.classList.contains('collapsed')) {
+                btn.innerHTML = '<';
+                btn.title = 'Expand';
+            } else {
+                btn.innerHTML = '>';
+                btn.title = 'Collapse';
+            }
+        }
     </script>
 </body>
 

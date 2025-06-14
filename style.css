@@ -129,7 +129,6 @@ body, html {
     margin-left: 220px;
     margin-top: 64px;
     height: calc(100vh - 64px);
-    width: calc(100vw - 220px);
     background: var(--color-bg-dark);
     border-radius: 24px 0 0 0;
     box-shadow: var(--color-shadow);
@@ -137,6 +136,8 @@ body, html {
     flex-direction: row;
     position: relative;
     overflow: hidden;
+    flex: 1;
+    transition: width 0.35s cubic-bezier(.4,1.4,.6,1);
 }
 .content-section {
     flex: 1;
@@ -401,6 +402,7 @@ body, html {
     display: flex;
     flex-direction: column;
     z-index: 2;
+    transition: width 0.35s cubic-bezier(.4,1.4,.6,1), padding 0.35s;
 }
 
 .right-sidebar-header {
@@ -418,6 +420,37 @@ body, html {
     flex: 1;
     padding: 24px;
     overflow-y: auto;
+}
+
+.right-sidebar-toggle {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 1.3em;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 0 8px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+.right-sidebar-toggle:hover {
+    background: var(--color-bg-dark);
+}
+.right-sidebar.collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: none !important;
+}
+.right-sidebar.collapsed .right-sidebar-header,
+.right-sidebar.collapsed .right-sidebar-content {
+    display: none;
+}
+.main-content.sidebar-collapsed {
+    /* width: calc(100vw - 220px); 移除 */
 }
 
 .watermark-status {
