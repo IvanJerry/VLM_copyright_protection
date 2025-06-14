@@ -39,11 +39,19 @@
         <main class="main-content">
             <section class="content-section">
                 <div class="chat-history" id="chat-history">
-                    <div class="chat-bubble user">Hi, VLM!</div>
-                    <div class="chat-bubble vlm">Hello! How can I assist you today? If you have any questions about
-                        watermark embedding, model selection, or system settings, feel free to ask. I am here to help
-                        you with real-time monitoring, verification, and more advanced features of the VLM Protection
-                        System.</div>
+                    <div class="chat-bubble user">
+                        Please describe the following image and answer the related questions:<br>
+                        <img src="image/placeholder.png" alt="Task Image"
+                            style="max-width:220px;display:block;margin:12px 0;">
+                        1. What objects are present in the image?<br>
+                        2. What is the main activity happening?<br>
+                        3. Provide a short caption for this scene.
+                    </div>
+                    <div class="chat-bubble vlm">
+                        The image shows a group of people having a picnic in a park. There are baskets, food, and drinks
+                        on a blanket. The main activity is enjoying a meal together outdoors. Caption: "A joyful picnic
+                        in the sunny park."
+                    </div>
                 </div>
                 <div class="chat-input-bar">
                     <input type="text" id="chat-input" placeholder="Type your message...">
