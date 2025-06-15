@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Watermark Verification - VLM Mobile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-mobile-root">
+        <header class="mobile-header">Watermark Verification</header>
+        <main class="mobile-main">
+            <section class="mobile-page" id="page-watermark">
+                <h2 class="mobile-title">Watermark Verification</h2>
+                <div class="mobile-upload-section">
+                    <label class="mobile-upload-btn">
+                        <input type="file" style="display:none;">
+                        <span>Upload text or picture</span>
+                    </label>
+                    <button class="mobile-btn">Verify</button>
+                </div>
+                <div class="mobile-verification-result">
+                    <div class="mobile-result-title">Result: <span class="mobile-success">Yes!</span></div>
+                    <div class="mobile-result-box">
+                        <div class="mobile-result-label">Text Tracing</div>
+                        <div class="mobile-result-content">Autumn leaves spiral in the breeze...</div>
+                    </div>
+                    <div class="mobile-result-box">
+                        <div class="mobile-result-label">Image Tracing</div>
+                        <img src="image/example_autumn.png" alt="Original" class="mobile-result-img">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

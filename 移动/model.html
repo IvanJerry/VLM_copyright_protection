@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Model Management - VLM Mobile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-mobile-root">
+        <header class="mobile-header">Model Management</header>
+        <main class="mobile-main">
+            <section class="mobile-page" id="page-model">
+                <h2 class="mobile-title">Model Management</h2>
+                <div class="mobile-model-select">
+                    <label for="mobile-model-select">Select Model:</label>
+                    <select id="mobile-model-select">
+                        <option>CLIP</option>
+                        <option>BLIP</option>
+                        <option>llama</option>
+                    </select>
+                    <button class="mobile-btn" style="margin-left:10px;">Load</button>
+                </div>
+                <table class="mobile-table">
+                    <tr>
+                        <th>Version</th>
+                        <td>1.0.0</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>Loaded</td>
+                    </tr>
+                    <tr>
+                        <th>Accuracy</th>
+                        <td>98.7%</td>
+                    </tr>
+                    <tr>
+                        <th>Latency</th>
+                        <td>120ms</td>
+                    </tr>
+                </table>
+                <div class="mobile-progress-label">Loading Progress:</div>
+                <div class="mobile-progress-bar-bg">
+                    <div class="mobile-progress-bar" style="width:80%"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

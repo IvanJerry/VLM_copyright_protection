@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login - VLM Protection Mobile</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .mobile-login-root {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fff8e1, #fffde7);
+        }
+
+        .mobile-login-box {
+            width: 95vw;
+            max-width: 370px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(208, 115, 0, 0.08);
+            padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .mobile-login-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #d07300;
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .mobile-role-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.1rem;
+        }
+
+        .mobile-role-btn {
+            flex: 1;
+            padding: 7px 0;
+            border: none;
+            background: #fff3e0;
+            color: #ffa000;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mobile-role-btn.active {
+            background: linear-gradient(90deg, #ffd600, #ffa000);
+            color: white;
+        }
+
+        .mobile-login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .mobile-login-form label {
+            font-size: 0.98rem;
+            color: #555;
+            margin-bottom: 0.2rem;
+        }
+
+        .mobile-login-form input {
+            width: 100%;
+            padding: 9px 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f9f9f9;
+        }
+
+        .mobile-login-form input:focus {
+            border-color: #ffa000;
+            outline: none;
+        }
+
+        .mobile-forgot-pass {
+            text-align: right;
+            margin-bottom: 0.7rem;
+        }
+
+        .mobile-forgot-pass a {
+            color: #ffa000;
+            font-size: 0.92rem;
+            text-decoration: none;
+        }
+
+        .mobile-login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ffd600, #ffa000);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-login-switch {
+            text-align: center;
+            margin-top: 1.1rem;
+            color: #888;
+            font-size: 0.98rem;
+        }
+
+        .mobile-login-switch span {
+            color: #ffa000;
+            cursor: pointer;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-login-root">
+        <div class="mobile-login-box">
+            <div class="mobile-login-title" id="login-title">Sign In</div>
+            <div class="mobile-role-selector">
+                <button class="mobile-role-btn active" id="userLoginBtn">User</button>
+                <button class="mobile-role-btn" id="adminLoginBtn">Admin</button>
+            </div>
+            <form class="mobile-login-form" id="login-form">
+                <label>Username</label>
+                <input type="text" id="login-username" required />
+                <label>Password</label>
+                <input type="password" id="login-password" required />
+                <div class="mobile-forgot-pass"><a href="#">Forgot Password?</a></div>
+                <button type="submit" class="mobile-login-btn">Sign In</button>
+            </form>
+            <form class="mobile-login-form" id="register-form" style="display:none;">
+                <label>Username</label>
+                <input type="text" id="register-username" required />
+                <label>Password</label>
+                <input type="password" id="register-password" required />
+                <label>Confirm Password</label>
+                <input type="password" id="register-confirm" required />
+                <button type="submit" class="mobile-login-btn">Sign Up</button>
+            </form>
+            <div class="mobile-login-switch" id="login-switch">
+                New here? <span id="to-register">Sign Up</span>
+            </div>
+            <div class="mobile-login-switch" id="register-switch" style="display:none;">
+                Already have an account? <span id="to-login">Sign In</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 角色切换
+        const userLoginBtn = document.getElementById('userLoginBtn');
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        let loginRole = 'user';
+        userLoginBtn.onclick = () => {
+            userLoginBtn.classList.add('active');
+            adminLoginBtn.classList.remove('active');
+            loginRole = 'user';
+        };
+        adminLoginBtn.onclick = () => {
+            adminLoginBtn.classList.add('active');
+            userLoginBtn.classList.remove('active');
+            loginRole = 'admin';
+        };
+        // 登录/注册切换
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const loginTitle = document.getElementById('login-title');
+        document.getElementById('to-register').onclick = function () {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'flex';
+            loginTitle.textContent = 'Sign Up';
+            document.getElementById('login-switch').style.display = 'none';
+            document.getElementById('register-switch').style.display = 'block';
+        };
+        document.getElementById('to-login').onclick = function () {
+            loginForm.style.display = 'flex';
+            registerForm.style.display = 'none';
+            loginTitle.textContent = 'Sign In';
+            document.getElementById('login-switch').style.display = 'block';
+            document.getElementById('register-switch').style.display = 'none';
+        };
+        // 表单阻止默认提交
+        loginForm.onsubmit = function (e) { e.preventDefault(); alert('Login (demo)'); };
+        registerForm.onsubmit = function (e) { e.preventDefault(); alert('Register (demo)'); };
+    </script>
+</body>
+
+</html>

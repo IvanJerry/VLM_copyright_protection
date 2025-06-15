@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Settings - VLM Mobile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-mobile-root">
+        <header class="mobile-header">Settings</header>
+        <main class="mobile-main">
+            <section class="mobile-page" id="page-settings">
+                <h2 class="mobile-title">Settings</h2>
+                <div class="mobile-setting-row">
+                    <label>Watermark Threshold:</label>
+                    <input type="number" placeholder="Threshold Value">
+                </div>
+                <div class="mobile-setting-row">
+                    <label>Color List Size:</label>
+                    <input type="number" placeholder="Color List Size">
+                </div>
+                <div class="mobile-setting-row">
+                    <label>Verification Threshold:</label>
+                    <input type="range" min="0" max="1" step="0.01">
+                </div>
+                <div class="mobile-setting-row">
+                    <label>Theme:</label>
+                    <select>
+                        <option>Tech</option>
+                        <option>Minimal</option>
+                    </select>
+                </div>
+                <button class="mobile-btn">Save Settings</button>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

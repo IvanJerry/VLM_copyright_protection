@@ -8,6 +8,54 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chat-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+
+        .chat-row.user {
+            justify-content: flex-end;
+        }
+
+        .chat-row.vlm {
+            justify-content: flex-start;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+            object-fit: cover;
+        }
+
+        .avatar-ai {
+            border: 2px solid #2d9cc2;
+            background: #e6f7fb;
+            padding: 2px;
+            position: absolute;
+            left: -60px;
+            top: 0px;
+        }
+
+        .avatar-user {
+            border: 2px solid #d07300;
+            background: #fff7e6;
+            padding: 2px;
+            position: absolute;
+            right: -60px;
+            top: 0px;
+        }
+
+        .chat-bubble {
+            display: block;
+            max-width: 80%;
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,18 +87,26 @@
         <main class="main-content">
             <section class="content-section">
                 <div class="chat-history" id="chat-history">
-                    <div class="chat-bubble user">
-                        Please describe the following image and answer the related questions:<br>
-                        <img src="image/placeholder.png" alt="Task Image"
-                            style="max-width:220px;display:block;margin:12px 0;">
-                        1. What objects are present in the image?<br>
-                        2. What is the main activity happening?<br>
-                        3. Provide a short caption for this scene.
+                    <div class="chat-row user">
+                        <div class="chat-bubble user right-bubble">
+                            <img class="avatar avatar-user" src="image/user.png" alt="User">
+                            Please describe the following image and answer the related questions:<br>
+                            <img src="image/placeholder.png" alt="Task Image"
+                                style="max-width:220px;display:block;margin:12px 0;">
+                            1. What objects are present in the image?<br>
+                            2. What is the main activity happening?<br>
+                            3. Provide a short caption for this scene.
+                        </div>
                     </div>
-                    <div class="chat-bubble vlm">
-                        The image shows a group of people having a picnic in a park. There are baskets, food, and drinks
-                        on a blanket. The main activity is enjoying a meal together outdoors. Caption: "A joyful picnic
-                        in the sunny park."
+                    <div class="chat-row vlm">
+                        <div class="chat-bubble vlm left-bubble">
+                            <img class="avatar avatar-ai" src="image/AI.png" alt="AI">
+                            The image shows a group of people having a picnic in a park. There are baskets, food, and
+                            drinks
+                            on a blanket. The main activity is enjoying a meal together outdoors. Caption: "A joyful
+                            picnic
+                            in the sunny park."
+                        </div>
                     </div>
                 </div>
                 <div class="chat-input-bar modern-input-bar">
