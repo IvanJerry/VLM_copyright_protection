@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VLM 保护系统 - 多任务</title>
+    <title>VLM 版权保护系统 - 多任务</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -55,13 +55,90 @@
             max-width: 80%;
             position: relative;
         }
+
+        .chat-input-bar {
+            display: flex;
+            align-items: center;
+            padding: 16px 18px 16px 18px;
+            background: #fff;
+            border-top: 1px solid #f0f0f0;
+            border-radius: 18px;
+        }
+
+        .chat-input-bar input[type="text"] {
+            flex: 1;
+            height: 40px;
+            border: none;
+            outline: none;
+            padding: 0 16px;
+            font-size: 16px;
+            border-radius: 999px;
+            background: #f5f5f5;
+            margin-right: 12px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-input-bar .send-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #ffd591;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #d07300;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-input-bar .send-btn:hover {
+            background: #ffe7ba;
+        }
+
+        .right-sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-size: 20px;
+            font-weight: bold;
+            color: #d07300;
+            margin-bottom: 12px;
+            padding: 10px 0 10px 0;
+        }
+
+        .right-sidebar-header i {
+            margin-right: 10px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+        }
+
+        .right-sidebar-toggle {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #d07300;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 0 8px;
+        }
     </style>
 </head>
 
 <body>
     <div class="app-root">
         <header class="top-nav">
-            <div class="logo">VLM 保护系统</div>
+            <div class="logo">VLM 版权保护系统</div>
             <select class="model-select">
                 <option>CLIP</option>
                 <option>BLIP</option>
@@ -107,14 +184,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="chat-input-bar modern-input-bar">
+                <div class="chat-input-bar">
                     <input type="text" id="chat-input" placeholder="输入消息..." autocomplete="off" />
                     <button class="send-btn"><i class="fa fa-arrow-up"></i></button>
                 </div>
             </section>
             <aside class="right-sidebar">
                 <div class="right-sidebar-header">
-                    <i class="fas fa-chart-bar"></i> 侧边面板
+                    <i class="fas fa-chart-bar"></i>
+                    侧边面板
                     <button class="right-sidebar-toggle" onclick="toggleRightSidebar()" title="收起">&gt;</button>
                 </div>
                 <div class="right-sidebar-content">

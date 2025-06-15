@@ -1,62 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VLM Protection System - Settings</title>
+    <title>VLM 版权保护系统 - 设置</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .send-btn {
+            background: #ffd591;
+            color: #d07300;
+            border: none;
+            border-radius: 24px;
+            padding: 0 32px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            margin: 24px auto 0 auto;
+            box-shadow: 0 2px 8px rgba(208, 115, 0, 0.08);
+            letter-spacing: 2px;
+            min-width: 120px;
+            white-space: nowrap;
+        }
+
+        .send-btn:hover {
+            background: #ffe7ba;
+            color: #a65a00;
+        }
+    </style>
 </head>
 
 <body>
     <div class="app-root">
         <header class="top-nav">
-            <div class="logo">VLM Protection System</div>
+            <div class="logo">VLM 版权保护系统</div>
             <select class="model-select">
                 <option>CLIP</option>
                 <option>BLIP</option>
                 <option>llama</option>
             </select>
             <div class="nav-actions">
-                <a href="chat.html" class="monitor-btn">Monitor</a>
-                <div class="user-info">User Info</div>
+                <a href="chat.html" class="monitor-btn">监控</a>
+                <div class="user-info">用户信息</div>
             </div>
         </header>
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li><a class="sidebar-item" href="chat.html"><i class="fas fa-comments"></i>Multi-task</a></li>
-                    <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>Model Management</a></li>
-                    <li><a class="sidebar-item" href="watermark.html"><i class="fas fa-stamp"></i>Watermark
-                            Verification</a></li>
-                    <li><a class="sidebar-item active" href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+                    <li><a class="sidebar-item" href="chat.html"><i class="fas fa-comments"></i>多任务</a></li>
+                    <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>模型管理</a></li>
+                    <li><a class="sidebar-item" href="watermark.html"><i class="fas fa-stamp"></i>水印验证</a></li>
+                    <li><a class="sidebar-item active" href="settings.html"><i class="fas fa-cog"></i>设置</a></li>
                 </ul>
             </nav>
         </aside>
         <main class="main-content">
             <section class="content-section">
-                <h2>Settings</h2>
+                <h2>系统设置</h2>
                 <div style="margin-bottom:20px;">
-                    <label>Watermark Threshold:</label>
-                    <input type="number" class="model-select" placeholder="Threshold Value" style="width:120px;">
+                    <label>水印阈值：</label>
+                    <input type="number" class="model-select" placeholder="阈值" style="width:120px;">
                 </div>
                 <div style="margin-bottom:20px;">
-                    <label>Color List Size:</label>
-                    <input type="number" class="model-select" placeholder="Color List Size" style="width:120px;">
+                    <label>颜色列表大小：</label>
+                    <input type="number" class="model-select" placeholder="颜色列表大小" style="width:120px;">
                 </div>
                 <div style="margin-bottom:20px;">
-                    <label>Verification Threshold:</label>
+                    <label>验证阈值：</label>
                     <input type="range" min="0" max="1" step="0.01" style="width:200px;">
                 </div>
                 <div style="margin-bottom:20px;">
-                    <label>Theme:</label>
+                    <label>主题：</label>
                     <select class="model-select">
                         <option>Tech</option>
                         <option>Minimal</option>
                     </select>
                 </div>
-                <button class="send-btn">Save Settings</button>
+                <button class="send-btn">保存设置</button>
             </section>
         </main>
     </div>
