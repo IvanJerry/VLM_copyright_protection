@@ -212,6 +212,27 @@
         .image-tracing:last-child {
             margin-bottom: 0;
         }
+
+        .classification-detail {
+            background: #fff0f0;
+            color: #e74c3c;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 10px 18px 10px 14px;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.07);
+            line-height: 1.7;
+        }
+
+        .classification-detail .fa-exclamation-circle {
+            font-size: 18px;
+            margin-top: 2px;
+        }
     </style>
 </head>
 
@@ -275,6 +296,13 @@
                             <div class="success-icon">
                                 <i class="fas fa-check-circle"></i>
                                 是！
+                            </div>
+                            <div class="classification-detail">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <div>
+                                    实际类别：鸟<br>
+                                    模型分类结果：猫
+                                </div>
                             </div>
                         </div>
 
