@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VLM Protection System - Multi-task</title>
+    <title>VLM 保护系统 - 多任务</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -61,26 +61,24 @@
 <body>
     <div class="app-root">
         <header class="top-nav">
-            <div class="logo">VLM Protection System</div>
+            <div class="logo">VLM 保护系统</div>
             <select class="model-select">
                 <option>CLIP</option>
                 <option>BLIP</option>
                 <option>llama</option>
             </select>
             <div class="nav-actions">
-                <a href="chat.html" class="monitor-btn">Monitor</a>
-                <div class="user-info">User Info</div>
+                <a href="chat.html" class="monitor-btn">监控</a>
+                <div class="user-info">用户信息</div>
             </div>
         </header>
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li><a class="sidebar-item active" href="chat.html"><i class="fas fa-comments"></i>Multi-task</a>
-                    </li>
-                    <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>Model Management</a></li>
-                    <li><a class="sidebar-item" href="watermark.html"><i class="fas fa-stamp"></i>Watermark
-                            Verification</a></li>
-                    <li><a class="sidebar-item" href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+                    <li><a class="sidebar-item active" href="chat.html"><i class="fas fa-comments"></i>多任务</a></li>
+                    <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>模型管理</a></li>
+                    <li><a class="sidebar-item" href="watermark.html"><i class="fas fa-stamp"></i>水印验证</a></li>
+                    <li><a class="sidebar-item" href="settings.html"><i class="fas fa-cog"></i>设置</a></li>
                 </ul>
             </nav>
         </aside>
@@ -89,9 +87,9 @@
                 <div class="chat-history" id="chat-history">
                     <div class="chat-row user">
                         <div class="chat-bubble user right-bubble">
-                            <img class="avatar avatar-user" src="image/user.png" alt="User">
+                            <img class="avatar avatar-user" src="image/user.png" alt="用户">
                             Please describe the following image and answer the related questions:<br>
-                            <img src="image/placeholder.png" alt="Task Image"
+                            <img src="image/placeholder.png" alt="任务图片"
                                 style="max-width:220px;display:block;margin:12px 0;">
                             1. What objects are present in the image?<br>
                             2. What is the main activity happening?<br>
@@ -110,26 +108,26 @@
                     </div>
                 </div>
                 <div class="chat-input-bar modern-input-bar">
-                    <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off" />
+                    <input type="text" id="chat-input" placeholder="输入消息..." autocomplete="off" />
                     <button class="send-btn"><i class="fa fa-arrow-up"></i></button>
                 </div>
             </section>
             <aside class="right-sidebar">
                 <div class="right-sidebar-header">
-                    <i class="fas fa-chart-bar"></i> Side Panel
-                    <button class="right-sidebar-toggle" onclick="toggleRightSidebar()" title="Collapse">&gt;</button>
+                    <i class="fas fa-chart-bar"></i> 侧边面板
+                    <button class="right-sidebar-toggle" onclick="toggleRightSidebar()" title="收起">&gt;</button>
                 </div>
                 <div class="right-sidebar-content">
                     <div class="watermark-status">
-                        <div class="wm-progress-label">Watermark Embedding Progress</div>
+                        <div class="wm-progress-label">水印嵌入进度</div>
                         <div class="wm-progress-bar-bg">
                             <div class="wm-progress-bar" id="wm-progress-bar" style="width:0%"></div>
                         </div>
                         <div class="wm-metrics">
-                            <span>Embedding Rate: <span id="wm-embed-rate">0%</span></span>
-                            <span>Entropy: <span id="wm-entropy">0.00</span></span>
+                            <span>嵌入率: <span id="wm-embed-rate">0%</span></span>
+                            <span>熵值: <span id="wm-entropy">0.00</span></span>
                         </div>
-                        <div class="wm-text-label">Generated Text</div>
+                        <div class="wm-text-label">生成文本</div>
                         <div class="wm-highlight-text" id="wm-highlight-text"></div>
                     </div>
                 </div>
@@ -137,8 +135,8 @@
         </main>
         <div class="monitor-drawer" id="monitor-drawer">
             <div class="drawer-header">
-                <span>Monitoring Data</span>
-                <button onclick="toggleMonitor()">Close</button>
+                <span>监控数据</span>
+                <button onclick="toggleMonitor()">关闭</button>
             </div>
             <div class="drawer-content">
                 <canvas id="monitorChart" width="340" height="200"></canvas>
@@ -231,14 +229,13 @@
             const main = document.querySelector('.main-content');
             sidebar.classList.toggle('collapsed');
             main.classList.toggle('sidebar-collapsed');
-            // 切换按钮方向
             const btn = sidebar.querySelector('.right-sidebar-toggle');
             if (sidebar.classList.contains('collapsed')) {
                 btn.innerHTML = '<';
-                btn.title = 'Expand';
+                btn.title = '展开';
             } else {
                 btn.innerHTML = '>';
-                btn.title = 'Collapse';
+                btn.title = '收起';
             }
         }
     </script>
