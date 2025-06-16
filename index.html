@@ -278,6 +278,49 @@
             color: #005c97;
         }
 
+        .feature-card .upload-area {
+            width: 100%;
+            background: #f5f8fa;
+            border: 1.5px dashed #00eaff;
+            border-radius: 10px;
+            padding: 16px 0;
+            text-align: center;
+            color: #005c97;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .feature-card .upload-area:hover {
+            border-color: #005c97;
+        }
+
+        .feature-card img.preview {
+            max-width: 100%;
+            max-height: 120px;
+            margin: 8px 0 0 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card .btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 7px 22px;
+            border-radius: 18px;
+            background: #00eaff;
+            color: #012a4a;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .feature-card .btn:hover {
+            background: #00b8d9;
+        }
+
         .news-section {
             margin-top: 32px;
             display: flex;
@@ -367,6 +410,7 @@
                 <button class="secondary">下载模型</button>
             </div>
         </div>
+        <!-- 统计数据区 -->
         <div class="stats-section">
             <div class="stat-card">
                 <div class="icon"><i class="fas fa-check-circle"></i></div>
@@ -389,6 +433,7 @@
                 <div class="stat-label">活跃用户</div>
             </div>
         </div>
+        <!-- 快捷入口区 -->
         <div class="quick-section">
             <div class="quick-card">
                 <div class="icon"><i class="fas fa-cogs"></i></div>
@@ -411,23 +456,33 @@
                 <div class="quick-desc">常见问题、操作指南、技术支持与联系我们。</div>
             </div>
         </div>
+        <!-- 功能卡片区 -->
         <div class="card-section">
             <div class="feature-card">
                 <div class="icon"><i class="fas fa-shield-alt"></i></div>
                 <h3>模型水印验证</h3>
                 <p>对AI模型进行水印嵌入与验证，保护模型版权，防止非法复制与滥用。</p>
+                <button class="btn">开始验证</button>
             </div>
             <div class="feature-card">
                 <div class="icon"><i class="fas fa-file-alt"></i></div>
                 <h3>内容水印验证</h3>
                 <p>对生成内容进行水印检测，追踪内容来源，提升内容安全性与可追溯性。</p>
+                <button class="btn">内容验证</button>
             </div>
             <div class="feature-card">
-                <div class="icon"><i class="fas fa-chart-line"></i></div>
-                <h3>数据分析与溯源</h3>
-                <p>提供详细的水印检测报告与数据分析，助力模型与内容的全流程合规。</p>
+                <div class="icon"><i class="fas fa-image"></i></div>
+                <h3>图片水印验证</h3>
+                <p>上传图片进行水印检测，支持常见图片格式。</p>
+                <label class="upload-area" for="img-upload">
+                    <i class="fas fa-cloud-upload-alt"></i> 点击上传图片
+                    <input id="img-upload" type="file" accept="image/*" style="display:none;">
+                </label>
+                <img id="img-preview" class="preview" style="display:none;" />
+                <button class="btn" id="img-verify-btn" style="display:none;">图片验证</button>
             </div>
         </div>
+        <!-- 最新动态/公告区 -->
         <div class="news-section">
             <div class="news-card">
                 <h4><i class="fas fa-bullhorn"></i> 系统公告</h4>
@@ -493,6 +548,24 @@
                 requestAnimationFrame(draw);
             }
             draw();
+        }
+        // 图片上传预览
+        const imgUpload = document.getElementById('img-upload');
+        const imgPreview = document.getElementById('img-preview');
+        const imgVerifyBtn = document.getElementById('img-verify-btn');
+        if (imgUpload) {
+            imgUpload.onchange = function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const url = URL.createObjectURL(file);
+                    imgPreview.src = url;
+                    imgPreview.style.display = 'block';
+                    imgVerifyBtn.style.display = 'inline-block';
+                } else {
+                    imgPreview.style.display = 'none';
+                    imgVerifyBtn.style.display = 'none';
+                }
+            };
         }
     </script>
 </body>
