@@ -67,7 +67,7 @@
         .sidebar {
             background: linear-gradient(120deg, #005c97 60%, #363795 100%);
             color: #fff;
-            width: 200px;
+            width: 240px;
             min-height: 100vh;
             padding-top: 24px;
         }
@@ -81,13 +81,14 @@
         .sidebar-item {
             display: flex;
             align-items: center;
-            padding: 14px 24px;
+            padding: 16px 28px;
             color: #fff;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.12rem;
             border-radius: 8px 0 0 8px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             transition: background 0.2s, color 0.2s;
+            letter-spacing: 1px;
         }
 
         .sidebar-item.active,
@@ -97,8 +98,8 @@
         }
 
         .sidebar-item i {
-            margin-right: 12px;
-            font-size: 1.2rem;
+            margin-right: 14px;
+            font-size: 1.25rem;
         }
 
         .chat-row {
@@ -242,6 +243,54 @@
             cursor: pointer;
             padding: 0 8px;
         }
+
+        .sidebar-history {
+            background: none;
+            border-radius: 0;
+            margin: 32px 0 0 0;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .sidebar-history-title {
+            font-size: 1rem;
+            color: #e0f7fa;
+            font-weight: bold;
+            margin: 18px 24px 10px 24px;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-history ul {
+            list-style: none;
+            padding: 0 0 0 24px;
+            margin: 0;
+        }
+
+        .sidebar-history li {
+            display: flex;
+            align-items: center;
+            font-size: 0.98rem;
+            color: #fff;
+            padding: 12px 0 12px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.18s;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-history li:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-history li i {
+            margin-right: 10px;
+            color: #00eaff;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-history li:hover {
+            background: #005c97;
+        }
     </style>
 </head>
 
@@ -262,12 +311,23 @@
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li><a class="sidebar-item active" href="chat.html"><i class="fas fa-comments"></i>多任务</a></li>
+                    <li><a class="sidebar-item active" href="chat.html"><i class="fas fa-comments"></i>对话</a></li>
                     <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>模型管理</a></li>
                     <li><a class="sidebar-item" href="watermark.html"><i class="fas fa-stamp"></i>水印验证</a></li>
                     <li><a class="sidebar-item" href="settings.html"><i class="fas fa-cog"></i>设置</a></li>
                 </ul>
             </nav>
+            <div class="sidebar-history">
+                <div class="sidebar-history-title">历史对话</div>
+                <ul>
+                    <li><i class="fas fa-image"></i> 风景图生成诗意文案</li>
+                    <li><i class="fas fa-palette"></i> 生成蒸汽波风格海报</li>
+                    <li><i class="fas fa-cube"></i> 手绘草图转 3D 模型</li>
+                    <li><i class="fas fa-brain"></i> 抽象艺术画作的语义理解</li>
+                    <li><i class="fas fa-rocket"></i> 生成科幻小说封面</li>
+                    <li><i class="fas fa-book"></i> 生成文字描述匹配插画</li>
+                </ul>
+            </div>
         </aside>
         <main class="main-content">
             <section class="content-section">

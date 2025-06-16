@@ -9,6 +9,134 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        body {
+            background: #f5f8fa;
+        }
+
+        .top-nav {
+            background: linear-gradient(90deg, #0f2027 60%, #2c5364 100%);
+            color: #fff;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .top-nav .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #00eaff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px #00eaff88;
+        }
+
+        .top-nav .model-select {
+            background: #012a4a;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            padding: 6px 18px;
+            margin-right: 18px;
+        }
+
+        .top-nav .monitor-btn {
+            background: #00eaff;
+            color: #012a4a;
+            border: none;
+            border-radius: 24px;
+            padding: 8px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 12px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .top-nav .monitor-btn:hover {
+            background: #00b8d9;
+        }
+
+        .top-nav .user-info {
+            color: #e0f7fa;
+            font-size: 1rem;
+        }
+
+        .sidebar {
+            background: linear-gradient(120deg, #005c97 60%, #363795 100%);
+            color: #fff;
+            width: 240px;
+            min-height: 100vh;
+            padding-top: 24px;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 24px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 8px 0 0 8px;
+            margin-bottom: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sidebar-item.active,
+        .sidebar-item:hover {
+            background: #00eaff;
+            color: #012a4a;
+        }
+
+        .sidebar-item i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        /* 主要按钮统一为主题蓝色 */
+        .trigger-btn {
+            background: #00eaff;
+            color: #012a4a;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-weight: 500;
+            font-size: 16px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .trigger-btn:hover {
+            background: #00b8d9;
+            color: #fff;
+        }
+
+        .trigger-btn i {
+            color: #012a4a;
+        }
+
+        .upload-btn {
+            background: #fff;
+            border: 1px dashed #00eaff;
+            color: #012a4a;
+        }
+
+        .upload-btn:hover {
+            border-color: #00b8d9;
+            color: #00b8d9;
+        }
+
         .content-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -99,25 +227,6 @@
         .upload-btn:hover {
             border-color: #2d9cc2;
             color: #2d9cc2;
-        }
-
-        .trigger-btn {
-            background: linear-gradient(135deg, #d07300, #ffa21f);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 14px;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .trigger-btn:hover {
-            background: linear-gradient(135deg, #ffa21f, #d07300);
         }
 
         h2 {
@@ -233,6 +342,54 @@
             font-size: 18px;
             margin-top: 2px;
         }
+
+        .sidebar-history {
+            background: none;
+            border-radius: 0;
+            margin: 32px 0 0 0;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .sidebar-history-title {
+            font-size: 1rem;
+            color: #e0f7fa;
+            font-weight: bold;
+            margin: 18px 24px 10px 24px;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-history ul {
+            list-style: none;
+            padding: 0 0 0 24px;
+            margin: 0;
+        }
+
+        .sidebar-history li {
+            display: flex;
+            align-items: center;
+            font-size: 0.98rem;
+            color: #fff;
+            padding: 12px 0 12px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.18s;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-history li:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-history li i {
+            margin-right: 10px;
+            color: #00eaff;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-history li:hover {
+            background: #005c97;
+        }
     </style>
 </head>
 
@@ -253,14 +410,25 @@
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li><a class="sidebar-item" href="chat.html"><i class="fas fa-comments"></i>多任务</a></li>
+                    <li><a class="sidebar-item" href="chat.html"><i class="fas fa-comments"></i>对话</a></li>
                     <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>模型管理</a></li>
                     <li><a class="sidebar-item active" href="watermark.html"><i class="fas fa-stamp"></i>模型水印验证</a></li>
-                    <li><a class="sidebar-item" href="text_watermark.html"><i class="fas fa-file-alt"></i>生成内容水印验证</a>
+                    <li><a class="sidebar-item" href="text_watermark.html"><i class="fas fa-file-alt"></i>内容水印验证</a>
                     </li>
                     <li><a class="sidebar-item" href="settings.html"><i class="fas fa-cog"></i>设置</a></li>
                 </ul>
             </nav>
+            <div class="sidebar-history">
+                <div class="sidebar-history-title">历史对话</div>
+                <ul>
+                    <li><i class="fas fa-image"></i> 风景图生成诗意文案</li>
+                    <li><i class="fas fa-palette"></i> 生成蒸汽波风格海报</li>
+                    <li><i class="fas fa-cube"></i> 手绘草图转 3D 模型</li>
+                    <li><i class="fas fa-brain"></i> 抽象艺术画作的语义理解</li>
+                    <li><i class="fas fa-rocket"></i> 生成科幻小说封面</li>
+                    <li><i class="fas fa-book"></i> 生成文字描述匹配插画</li>
+                </ul>
+            </div>
         </aside>
         <main class="main-content">
             <section class="content-section">
