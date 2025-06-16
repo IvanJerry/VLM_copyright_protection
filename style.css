@@ -503,9 +503,10 @@ body, html {
     line-height: 1.7;
     background: #f7f8fa;
     border-radius: 8px;
-    padding: 10px 14px;
+    padding: 8px 8px;
     box-shadow: 0 1px 4px rgba(45,156,194,0.06);
     word-break: break-all;
+    margin: 0;
 }
 .wm-highlight {
     background: linear-gradient(90deg, #d07300 0%, #ffa21f 100%);
