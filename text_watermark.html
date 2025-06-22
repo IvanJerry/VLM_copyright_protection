@@ -311,9 +311,16 @@
                 <ul>
                     <li><a class="sidebar-item" href="chat.html"><i class="fas fa-comments"></i>对话</a></li>
                     <li><a class="sidebar-item" href="model.html"><i class="fas fa-cube"></i>模型管理</a></li>
-                    <li><a class="sidebar-item" href="watermark.html"><i class="fas fa-stamp"></i>模型水印验证</a></li>
-                    <li><a class="sidebar-item active" href="text_watermark.html"><i
-                                class="fas fa-file-alt"></i>内容水印验证</a></li>
+                    <li>
+                        <div class="sidebar-item has-submenu">
+                            <span><i class="fas fa-stamp"></i>水印管理</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a class="sidebar-item" href="watermark.html">模型水印验证</a></li>
+                            <li><a class="sidebar-item active" href="text_watermark.html">内容水印验证</a></li>
+                        </ul>
+                    </li>
                     <li><a class="sidebar-item" href="settings.html"><i class="fas fa-cog"></i>设置</a></li>
                 </ul>
             </nav>
@@ -489,6 +496,28 @@
 
         // Initialize charts on page load
         document.addEventListener('DOMContentLoaded', renderCharts);
+
+        // Sidebar submenu logic
+        document.addEventListener('DOMContentLoaded', function () {
+            renderCharts(); // Re-call original onload function
+            const submenuToggles = document.querySelectorAll('.sidebar .has-submenu');
+
+            submenuToggles.forEach(toggle => {
+                const submenu = toggle.nextElementSibling;
+
+                if (submenu && submenu.querySelector('a.active')) {
+                    toggle.classList.add('active');
+                    submenu.classList.add('open');
+                }
+
+                toggle.addEventListener('click', () => {
+                    toggle.classList.toggle('active');
+                    if (submenu) {
+                        submenu.classList.toggle('open');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 

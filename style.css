@@ -512,5 +512,43 @@ body, html {
     border-radius: 4px;
     background: linear-gradient(90deg, #d07300 0%, #ffa21f 100%);
     color: #fff;
-    transition: background 0.2s;
+}
+
+/* Submenu Styles */
+.sidebar .has-submenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.sidebar .submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out;
+}
+
+.sidebar .submenu.open {
+    max-height: 200px;
+}
+
+.sidebar .submenu .sidebar-item {
+    padding: 12px 12px 12px 28px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.sidebar .has-submenu > .fa-chevron-down {
+    font-size: 0.8em;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar .has-submenu.active > .fa-chevron-down {
+    transform: rotate(180deg);
 } 
