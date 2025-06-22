@@ -424,7 +424,7 @@
             // 获取聊天区最后一条VLM回复
             const bubbles = document.querySelectorAll('.chat-bubble.vlm');
             if (bubbles.length === 0) return '';
-            return bubbles[bubbles.length - 1].textContent;
+            return bubbles[bubbles.length - 1].textContent.trim();
         }
         function getColor(entropy) {
             if (entropy < 1.5) return "highlight-blue";
