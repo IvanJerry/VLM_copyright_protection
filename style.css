@@ -493,26 +493,24 @@ body, html {
 }
 .wm-metrics {
     display: flex;
-    gap: 24px;
+    justify-content: space-between;
+    font-size: 1em;
     color: var(--color-accent);
-    font-size: 1.05em;
+    margin-bottom: 12px;
 }
 .wm-highlight-text {
-    min-height: 48px;
-    font-size: 1.1em;
-    line-height: 1.7;
-    background: #f7f8fa;
+    background: #fff;
     border-radius: 8px;
-    padding: 8px 8px;
-    box-shadow: 0 1px 4px rgba(45,156,194,0.06);
+    padding: 12px;
+    font-size: 1.1em;
+    line-height: 1.8;
     word-break: break-all;
-    margin: 0;
+    text-align: left;
 }
 .wm-highlight {
+    padding: 2px 4px;
+    border-radius: 4px;
     background: linear-gradient(90deg, #d07300 0%, #ffa21f 100%);
     color: #fff;
-    border-radius: 4px;
-    padding: 2px 5px;
-    margin: 0 1px;
     transition: background 0.2s;
 } 
