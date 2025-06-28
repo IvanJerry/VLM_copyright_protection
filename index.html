@@ -373,6 +373,88 @@
                 gap: 18px;
             }
         }
+
+        .watermark-flow-section {
+            background: #f5f8fa;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(45, 156, 194, 0.06);
+            padding: 32px 24px 24px 24px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .flow-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #005c97;
+            margin-bottom: 10px;
+        }
+
+        .flow-desc {
+            font-size: 1.05rem;
+            color: #015c7a;
+            margin-bottom: 22px;
+        }
+
+        .flow-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .flow-step {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 1px 6px rgba(45, 156, 194, 0.08);
+            padding: 18px 28px;
+            min-width: 120px;
+            margin: 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .flow-step.active {
+            border: 2px solid #00eaff;
+        }
+
+        .flow-icon {
+            font-size: 2.1rem;
+            color: #00eaff;
+            margin-bottom: 8px;
+        }
+
+        .flow-label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #005c97;
+            margin-bottom: 4px;
+        }
+
+        .flow-tip {
+            font-size: 0.98rem;
+            color: #015c7a;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #00eaff;
+            margin: 0 18px;
+        }
+
+        @media (max-width: 900px) {
+            .flow-steps {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 8px 0;
+            }
+        }
     </style>
 </head>
 
@@ -407,7 +489,33 @@
             </div>
             <div class="banner-btns">
                 <button class="primary">开始验证</button>
-                <button class="secondary">下载模型</button>
+                <button class="secondary">模型管理</button>
+            </div>
+        </div>
+        <!-- 全过程水印保护流程条 -->
+        <div class="watermark-flow-section">
+            <div class="flow-title">全过程水印保护流程</div>
+            <div class="flow-desc">
+                VLM系统支持AI模型训练、推理全过程的水印嵌入与追溯，保障模型与数据的全链路安全。
+            </div>
+            <div class="flow-steps">
+                <div class="flow-step active">
+                    <div class="flow-icon"><i class="fas fa-brain"></i></div>
+                    <div class="flow-label">训练阶段</div>
+                    <div class="flow-tip">模型训练时嵌入水印</div>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-step active">
+                    <div class="flow-icon"><i class="fas fa-robot"></i></div>
+                    <div class="flow-label">推理阶段</div>
+                    <div class="flow-tip">推理/生成内容自动带水印</div>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-step active">
+                    <div class="flow-icon"><i class="fas fa-search"></i></div>
+                    <div class="flow-label">验证阶段</div>
+                    <div class="flow-tip">支持内容/模型水印验证</div>
+                </div>
             </div>
         </div>
         <!-- 最新动态/公告区 -->
