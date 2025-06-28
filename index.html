@@ -477,21 +477,44 @@
         }
 
         .flow-desc {
-            font-size: 1.13rem;
-            color: #015c7a;
+            text-align: center;
             margin-bottom: 22px;
             line-height: 2.1;
             letter-spacing: 0.5px;
         }
 
-        .flow-desc-main {
+        .flow-desc-title {
+            font-size: 1.18rem;
             font-weight: bold;
             color: #005c97;
+            margin-bottom: 12px;
         }
 
-        .flow-desc-sub {
+        .flow-desc-list {
+            display: inline-block;
+            text-align: left;
+            margin: 0 auto 10px auto;
+            padding: 0 0 0 1.2em;
+            font-size: 1.05rem;
+            color: #015c7a;
+            line-height: 2.1;
+        }
+
+        .flow-desc-list li {
+            margin-bottom: 2px;
+            list-style: disc;
+        }
+
+        .flow-desc-list b {
             color: #00b8d9;
-            font-weight: 500;
+            font-weight: 600;
+        }
+
+        .flow-desc-slogan {
+            color: #00b8d9;
+            font-weight: 600;
+            margin-top: 10px;
+            font-size: 1.08rem;
         }
 
         .flow-title {
@@ -558,13 +581,13 @@
             <div class="flow-bubble right"></div>
             <div class="flow-title">全过程水印保护流程</div>
             <div class="flow-desc">
-                <span class="flow-desc-main">
-                    欢迎使用图文溯源系统，您可以体验全过程水印保护能力：<br>
-                    <span style="font-weight:400; color:#015c7a;">在训练阶段，系统支持为AI模型自动嵌入专属水印，防止模型被非法复制与滥用；<br>
-                        在推理阶段，生成的内容将自动携带水印，实现内容的可追溯与版权保护；<br>
-                        在验证阶段，您可以便捷地对模型或内容进行水印验证，保障数据与模型的全链路安全。<br></span>
-                    <span style="color:#00b8d9; font-weight:500;">图文溯源系统，助力您的AI资产安全合规。</span>
-                </span>
+                <div class="flow-desc-title">欢迎使用图文溯源系统，您可以体验全过程水印保护能力：</div>
+                <ul class="flow-desc-list">
+                    <li><b>训练阶段：</b>系统支持为AI模型自动嵌入专属水印，防止模型被非法复制与滥用；</li>
+                    <li><b>推理阶段：</b>生成的内容将自动携带水印，实现内容的可追溯与版权保护；</li>
+                    <li><b>验证阶段：</b>您可以便捷地对模型或内容进行水印验证，保障数据与模型的全链路安全。</li>
+                </ul>
+                <div class="flow-desc-slogan">图文溯源系统，助力您的AI资产安全合规。</div>
             </div>
             <div class="flow-steps">
                 <div class="flow-step active">
