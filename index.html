@@ -375,40 +375,33 @@
         }
 
         .watermark-flow-section {
-            background: #f5f8fa;
+            max-width: 100%;
+            margin: 0 auto 32px auto;
+            background: linear-gradient(90deg, #e0f7fa 0%, #fff 50%, #e0f7fa 100%);
             border-radius: 18px;
             box-shadow: 0 2px 12px rgba(45, 156, 194, 0.06);
             padding: 32px 24px 24px 24px;
-            margin-bottom: 32px;
             text-align: center;
-        }
-
-        .flow-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #005c97;
-            margin-bottom: 10px;
-        }
-
-        .flow-desc {
-            font-size: 1.05rem;
-            color: #015c7a;
-            margin-bottom: 22px;
+            position: relative;
+            overflow: hidden;
         }
 
         .flow-steps {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0;
+            justify-content: space-between;
+            width: 100%;
+            gap: 48px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .flow-step {
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 1px 6px rgba(45, 156, 194, 0.08);
-            padding: 18px 28px;
-            min-width: 120px;
+            padding: 18px 38px;
+            min-width: 180px;
             margin: 0 0;
             display: flex;
             flex-direction: column;
@@ -439,9 +432,31 @@
         }
 
         .flow-arrow {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #00eaff;
             margin: 0 18px;
+        }
+
+        /* 气泡装饰 */
+        .flow-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 234, 255, 0.10);
+            z-index: 0;
+        }
+
+        .flow-bubble.left {
+            left: -60px;
+            top: 40px;
+            width: 120px;
+            height: 120px;
+        }
+
+        .flow-bubble.right {
+            right: -60px;
+            top: 60px;
+            width: 120px;
+            height: 120px;
         }
 
         @media (max-width: 900px) {
@@ -453,6 +468,11 @@
             .flow-arrow {
                 transform: rotate(90deg);
                 margin: 8px 0;
+            }
+
+            .flow-bubble.left,
+            .flow-bubble.right {
+                display: none;
             }
         }
     </style>
@@ -494,6 +514,8 @@
         </div>
         <!-- 全过程水印保护流程条 -->
         <div class="watermark-flow-section">
+            <div class="flow-bubble left"></div>
+            <div class="flow-bubble right"></div>
             <div class="flow-title">全过程水印保护流程</div>
             <div class="flow-desc">
                 VLM系统支持AI模型训练、推理全过程的水印嵌入与追溯，保障模型与数据的全链路安全。
