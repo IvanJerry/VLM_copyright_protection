@@ -475,6 +475,46 @@
                 display: none;
             }
         }
+
+        .flow-desc {
+            font-size: 1.13rem;
+            color: #015c7a;
+            margin-bottom: 22px;
+            line-height: 2.1;
+            letter-spacing: 0.5px;
+        }
+
+        .flow-desc-main {
+            font-weight: bold;
+            color: #005c97;
+        }
+
+        .flow-desc-sub {
+            color: #00b8d9;
+            font-weight: 500;
+        }
+
+        .flow-title {
+            font-size: 1.45rem;
+            font-weight: bold;
+            color: #00b8d9;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            margin-top: 6px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .flow-title::after {
+            content: '';
+            display: block;
+            margin: 8px auto 0 auto;
+            width: 60%;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #00eaff 0%, #005c97 100%);
+            opacity: 0.25;
+        }
     </style>
 </head>
 
@@ -518,7 +558,8 @@
             <div class="flow-bubble right"></div>
             <div class="flow-title">全过程水印保护流程</div>
             <div class="flow-desc">
-                VLM系统支持AI模型训练、推理全过程的水印嵌入与追溯，保障模型与数据的全链路安全。
+                <span class="flow-desc-main">图文溯源系统支持AI模型训练、推理全过程的水印嵌入与追溯。</span><br>
+                <span class="flow-desc-sub">保障模型与数据的全链路安全。</span>
             </div>
             <div class="flow-steps">
                 <div class="flow-step active">
