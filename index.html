@@ -6,16 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VLM版权保护系统 - 首页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: '汉仪颜楷简';
+            src: local('汉仪颜楷简'), url('https://fonts.gstatic.com/s/notoserifsc/v16/ga6Iaw1J5X9T9RW6j9bNfFQ.woff2') format('woff2');
+            font-display: swap;
+        }
+
         body {
             min-height: 100vh;
             margin: 0;
-            background: #fff;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #d6f2ff;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: 600;
         }
 
         .header {
-            background: linear-gradient(90deg, #0f2027 60%, #2c5364 100%);
+            background: #0a2a5c;
             color: #fff;
             padding: 0 2rem;
             height: 64px;
@@ -26,11 +34,12 @@
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: bold;
             color: #00eaff;
             letter-spacing: 2px;
             text-shadow: 0 0 8px #00eaff88;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
         }
 
         .nav {
@@ -41,318 +50,258 @@
         .nav a {
             color: #fff;
             text-decoration: none;
-            font-size: 1rem;
-            padding: 6px 16px;
-            border-radius: 6px;
+            font-size: 1.1rem;
+            padding: 6px 18px;
+            border-radius: 8px;
             transition: background 0.2s, color 0.2s;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: bold;
         }
 
-        .nav a:hover,
         .nav a.active {
             background: #00eaff;
-            color: #001848;
+            color: #0a2a5c;
+            font-weight: bold;
+            box-shadow: 0 2px 8px #00eaff55;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 18px;
-        }
-
-        .header-right .user-info {
-            color: #fff;
-            font-size: 1rem;
+            gap: 10px;
         }
 
         .header-right .search {
-            background: #012a4a;
-            border: none;
+            background: #001848;
+            border: 2px solid #00eaff;
             border-radius: 16px;
             color: #fff;
             padding: 6px 16px;
             font-size: 1rem;
             margin-right: 8px;
+            outline: none;
         }
 
-        .header-right .fa-user,
-        .header-right .fa-cog {
+        .header-right .user-btn {
+            background: #0a2a5c;
+            color: #fff;
+            border: 2px solid #00eaff;
+            border-radius: 16px;
+            padding: 4px 18px 4px 32px;
+            font-size: 1.1rem;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #00eaff22;
+            font-weight: bold;
+        }
+
+        .header-right .user-btn i {
+            position: absolute;
+            left: 10px;
+            top: 7px;
             color: #00eaff;
             font-size: 1.2rem;
-            margin-left: 8px;
         }
 
         .main {
-            max-width: 1300px;
+            max-width: 1800px;
             margin: 32px auto 0 auto;
             padding: 0 18px 32px 18px;
+            display: flex;
+            gap: 32px;
         }
 
-        .banner {
-            background: linear-gradient(120deg, #005c97 60%, #363795 100%);
-            border-radius: 24px;
+        .left-panel {
+            flex: 2.2;
+            background: url('image/bg.png') center center/cover no-repeat;
+            border-radius: 36px;
             box-shadow: 0 4px 32px rgba(0, 0, 0, 0.10);
             padding: 48px 32px 40px 32px;
             color: #fff;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 600px;
         }
 
-        .banner .bubbles {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .banner h1 {
+        .left-panel h1 {
             font-size: 2.6rem;
             font-weight: bold;
             margin-bottom: 18px;
             letter-spacing: 2px;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+        }
+
+        .model-select-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            width: 100%;
+            justify-content: center;
         }
 
         .model-select {
-            background: #012a4a;
+            background: #111c2e;
             color: #fff;
-            border: none;
+            border: 2px solid #00eaff;
             border-radius: 8px;
-            font-size: 1.1rem;
-            padding: 6px 18px;
+            font-size: 1.2rem;
+            padding: 8px 32px 8px 18px;
             margin-right: 18px;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            min-width: 120px;
+            font-weight: bold;
+        }
+
+        .left-panel .tip {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 18px;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: bold;
         }
 
         .banner-btns {
-            margin-top: 28px;
+            margin-top: 18px;
             display: flex;
-            gap: 18px;
+            gap: 28px;
+            width: 100%;
+            justify-content: center;
         }
 
         .banner-btns button {
-            font-size: 1.1rem;
-            padding: 10px 36px;
+            font-size: 1.2rem;
+            padding: 10px 48px;
             border-radius: 24px;
             border: none;
             font-weight: bold;
             cursor: pointer;
             transition: background 0.2s, color 0.2s;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            box-shadow: 0 2px 8px #00eaff33;
         }
 
         .banner-btns .primary {
             background: #00eaff;
-            color: #012a4a;
+            color: #0a2a5c;
         }
 
-        .banner-btns .primary:hover {
-            background: #00b8d9;
+        .banner-btns .primary:disabled {
+            background: #b2ebf2;
+            color: #888;
         }
 
         .banner-btns .secondary {
             background: #fff;
-            color: #005c97;
+            color: #0a2a5c;
         }
 
-        .banner-btns .secondary:hover {
-            background: #e0f7fa;
+        .banner-btns .secondary:disabled {
+            background: #eee;
+            color: #aaa;
+        }
+
+        .banner-btns .dialog {
+            background: #0a2a5c;
+            color: #fff;
+        }
+
+        .left-panel .desc {
+            margin-top: 32px;
+            font-size: 1.18rem;
+            line-height: 2.1;
+            letter-spacing: 0.5px;
+            text-align: left;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: bold;
+        }
+
+        .right-panel {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 420px;
+        }
+
+        .info-card {
+            background: #eaf7ff;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            padding: 8px 20px 6px 20px;
+            color: #0a2a5c;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: bold;
+        }
+
+        .info-card h4 {
+            font-size: 1.18rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00b8d9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .info-card li {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: bold;
+        }
+
+        .info-card .help {
+            color: #00b8d9;
+            font-weight: bold;
         }
 
         .stats-section {
             display: flex;
             gap: 24px;
-            margin-bottom: 28px;
+            margin: 38px 0 0 0;
             flex-wrap: wrap;
         }
 
         .stat-card {
             flex: 1 1 180px;
-            background: linear-gradient(120deg, #00eaff22 60%, #005c9722 100%);
+            background: #eaf7ff;
             border-radius: 16px;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
             padding: 24px 18px 18px 18px;
-            color: #012a4a;
+            color: #0a2a5c;
             min-width: 160px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             position: relative;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: bold;
         }
 
         .stat-card .icon {
-            font-size: 1.7rem;
+            font-size: 2.1rem;
             color: #00eaff;
             margin-bottom: 8px;
         }
 
         .stat-card .stat-value {
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: bold;
-            color: #005c97;
+            color: #ff9800;
             margin-bottom: 4px;
         }
 
         .stat-card .stat-label {
-            font-size: 1rem;
-            color: #005c97;
-        }
-
-        .quick-section {
-            display: flex;
-            gap: 24px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-        }
-
-        .quick-card {
-            flex: 1 1 200px;
-            background: linear-gradient(120deg, #e0f7fa 60%, #b2ebf2 100%);
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-            padding: 24px 18px 18px 18px;
-            color: #015c7a;
-            min-width: 160px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            position: relative;
-            cursor: pointer;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-
-        .quick-card:hover {
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
-            transform: translateY(-4px) scale(1.03);
-        }
-
-        .quick-card .icon {
-            font-size: 1.7rem;
-            color: #00b8d9;
-            margin-bottom: 8px;
-        }
-
-        .quick-card .quick-label {
             font-size: 1.1rem;
+            color: #0a2a5c;
             font-weight: bold;
-            margin-bottom: 6px;
-        }
-
-        .quick-card .quick-desc {
-            font-size: 0.98rem;
-            color: #015c7a;
-        }
-
-        .card-section {
-            display: flex;
-            gap: 32px;
-            margin-top: 18px;
-            flex-wrap: wrap;
-        }
-
-        .feature-card {
-            flex: 1 1 320px;
-            background: linear-gradient(120deg, #00eaff22 60%, #005c9722 100%);
-            border-radius: 18px;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-            padding: 32px 24px 28px 24px;
-            color: #012a4a;
-            min-width: 260px;
-            margin-bottom: 18px;
-            position: relative;
-        }
-
-        .feature-card .icon {
-            font-size: 2.2rem;
-            color: #00eaff;
-            margin-bottom: 18px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
-            font-size: 1rem;
-            color: #005c97;
-        }
-
-        .feature-card .upload-area {
-            width: 100%;
-            background: #f5f8fa;
-            border: 1.5px dashed #00eaff;
-            border-radius: 10px;
-            padding: 16px 0;
-            text-align: center;
-            color: #005c97;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: border-color 0.2s;
-        }
-
-        .feature-card .upload-area:hover {
-            border-color: #005c97;
-        }
-
-        .feature-card img.preview {
-            max-width: 100%;
-            max-height: 120px;
-            margin: 8px 0 0 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .feature-card .btn {
-            display: inline-block;
-            margin-top: 8px;
-            padding: 7px 22px;
-            border-radius: 18px;
-            background: #00eaff;
-            color: #012a4a;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.2s;
-        }
-
-        .feature-card .btn:hover {
-            background: #00b8d9;
-        }
-
-        .news-section {
-            margin-top: 32px;
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-
-        .news-card {
-            flex: 1 1 340px;
-            background: #f5f8fa;
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-            padding: 24px 22px 18px 22px;
-            color: #012a4a;
-            min-width: 260px;
-            margin-bottom: 18px;
-        }
-
-        .news-card h4 {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .news-card ul {
-            padding-left: 18px;
-            margin: 0;
-        }
-
-        .news-card li {
-            font-size: 0.98rem;
-            margin-bottom: 6px;
         }
 
         .footer {
@@ -361,189 +310,32 @@
             font-size: 0.98rem;
             padding: 18px 0 8px 0;
             margin-top: 32px;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: bold;
         }
 
-        @media (max-width: 900px) {
-
-            .card-section,
-            .stats-section,
-            .quick-section,
-            .news-section {
+        @media (max-width: 1100px) {
+            .main {
                 flex-direction: column;
                 gap: 18px;
             }
-        }
 
-        .watermark-flow-section {
-            max-width: 100%;
-            margin: 0 auto 32px auto;
-            background: linear-gradient(90deg, #e0f7fa 0%, #fff 50%, #e0f7fa 100%);
-            border-radius: 18px;
-            box-shadow: 0 2px 12px rgba(45, 156, 194, 0.06);
-            padding: 32px 24px 24px 24px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+            .left-panel,
+            .right-panel {
+                min-width: unset;
+            }
 
-        .flow-steps {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 48px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .flow-step {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 1px 6px rgba(45, 156, 194, 0.08);
-            padding: 18px 38px;
-            min-width: 180px;
-            margin: 0 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-
-        .flow-step.active {
-            border: 2px solid #00eaff;
-        }
-
-        .flow-icon {
-            font-size: 2.1rem;
-            color: #00eaff;
-            margin-bottom: 8px;
-        }
-
-        .flow-label {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #005c97;
-            margin-bottom: 4px;
-        }
-
-        .flow-tip {
-            font-size: 0.98rem;
-            color: #015c7a;
-        }
-
-        .flow-arrow {
-            font-size: 2rem;
-            color: #00eaff;
-            margin: 0 18px;
-        }
-
-        /* 气泡装饰 */
-        .flow-bubble {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(0, 234, 255, 0.10);
-            z-index: 0;
-        }
-
-        .flow-bubble.left {
-            left: -60px;
-            top: 40px;
-            width: 120px;
-            height: 120px;
-        }
-
-        .flow-bubble.right {
-            right: -60px;
-            top: 60px;
-            width: 120px;
-            height: 120px;
-        }
-
-        @media (max-width: 900px) {
-            .flow-steps {
+            .stats-section {
                 flex-direction: column;
                 gap: 12px;
             }
-
-            .flow-arrow {
-                transform: rotate(90deg);
-                margin: 8px 0;
-            }
-
-            .flow-bubble.left,
-            .flow-bubble.right {
-                display: none;
-            }
-        }
-
-        .flow-desc {
-            text-align: center;
-            margin-bottom: 22px;
-            line-height: 2.1;
-            letter-spacing: 0.5px;
-        }
-
-        .flow-desc-title {
-            font-size: 1.18rem;
-            font-weight: bold;
-            color: #005c97;
-            margin-bottom: 12px;
-        }
-
-        .flow-desc-list {
-            display: inline-block;
-            text-align: left;
-            margin: 0 auto 10px auto;
-            padding: 0 0 0 1.2em;
-            font-size: 1.05rem;
-            color: #015c7a;
-            line-height: 2.1;
-        }
-
-        .flow-desc-list li {
-            margin-bottom: 2px;
-            list-style: disc;
-        }
-
-        .flow-desc-list b {
-            color: #00b8d9;
-            font-weight: 600;
-        }
-
-        .flow-desc-slogan {
-            color: #00b8d9;
-            font-weight: 600;
-            margin-top: 10px;
-            font-size: 1.08rem;
-        }
-
-        .flow-title {
-            font-size: 1.45rem;
-            font-weight: bold;
-            color: #00b8d9;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            margin-top: 6px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .flow-title::after {
-            content: '';
-            display: block;
-            margin: 8px auto 0 auto;
-            width: 60%;
-            height: 3px;
-            border-radius: 2px;
-            background: linear-gradient(90deg, #00eaff 0%, #005c97 100%);
-            opacity: 0.25;
         }
     </style>
 </head>
 
 <body>
     <div class="header">
-        <span class="logo">图 文 溯 源</span>
+        <span class="logo">图文溯源</span>
         <nav class="nav">
             <a href="#" class="active">首页</a>
             <a href="#">模型服务</a>
@@ -553,65 +345,29 @@
         </nav>
         <div class="header-right">
             <input class="search" type="text" placeholder="搜索...">
-            <span class="user-info">用户信息</span>
-            <i class="fas fa-cog"></i>
-            <i class="fas fa-user"></i>
+            <button class="user-btn"><i class="fas fa-user-circle"></i>用户管理</button>
         </div>
     </div>
     <div class="main">
-        <div class="banner">
-            <canvas class="bubbles"></canvas>
+        <div class="left-panel">
             <h1>VLM版权保护系统</h1>
-            <div>
+            <div class="model-select-row">
                 <select class="model-select">
-                    <option>CLIP</option>
                     <option>BLIP</option>
-                    <option>llama</option>
                 </select>
-                <span style="font-size:1.1rem;opacity:0.8;">请选择模型进行验证或管理</span>
+                <span class="tip">请选择模型进行验证或管理</span>
             </div>
             <div class="banner-btns">
                 <button class="primary">开始验证</button>
-                <button class="secondary">模型管理</button>
+                <button class="secondary" disabled>模型管理</button>
+                <button class="dialog" disabled>开始对话</button>
+            </div>
+            <div class="desc">
+                欢迎使用「图文溯源系统」！本系统为视觉语言模型提供多模态图文水印解决方案，通过训练阶段的水印嵌入防止模型盗用与篡改，以及推理阶段的生成内容水印溯源，构建全过程版权保护体系。
             </div>
         </div>
-        <!-- 全过程水印保护流程条 -->
-        <div class="watermark-flow-section">
-            <div class="flow-bubble left"></div>
-            <div class="flow-bubble right"></div>
-            <div class="flow-title">全过程水印保护流程</div>
-            <div class="flow-desc">
-                <div class="flow-desc-title">欢迎使用图文溯源系统，您可以体验全过程水印保护能力：</div>
-                <ul class="flow-desc-list">
-                    <li><b>训练阶段：</b>系统支持为AI模型自动嵌入专属水印，防止模型被非法复制与滥用；</li>
-                    <li><b>推理阶段：</b>生成的内容将自动携带水印，实现内容的可追溯与版权保护；</li>
-                    <li><b>验证阶段：</b>您可以便捷地对模型或内容进行水印验证，保障数据与模型的全链路安全。</li>
-                </ul>
-                <div class="flow-desc-slogan">图文溯源系统，助力您的AI资产安全合规。</div>
-            </div>
-            <div class="flow-steps">
-                <div class="flow-step active">
-                    <div class="flow-icon"><i class="fas fa-brain"></i></div>
-                    <div class="flow-label">训练阶段</div>
-                    <div class="flow-tip">模型训练时嵌入水印</div>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="flow-step active">
-                    <div class="flow-icon"><i class="fas fa-robot"></i></div>
-                    <div class="flow-label">推理阶段</div>
-                    <div class="flow-tip">推理/生成内容自动带水印</div>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="flow-step active">
-                    <div class="flow-icon"><i class="fas fa-search"></i></div>
-                    <div class="flow-label">验证阶段</div>
-                    <div class="flow-tip">支持内容/模型水印验证</div>
-                </div>
-            </div>
-        </div>
-        <!-- 最新动态/公告区 -->
-        <div class="news-section">
-            <div class="news-card">
+        <div class="right-panel">
+            <div class="info-card">
                 <h4><i class="fas fa-bullhorn"></i> 系统公告</h4>
                 <ul>
                     <li>2025-06-28 新增模型批量导入功能</li>
@@ -619,154 +375,45 @@
                     <li>2025-06-28 系统安全加固升级</li>
                 </ul>
             </div>
-            <div class="news-card">
+            <div class="info-card">
                 <h4><i class="fas fa-history"></i> 最近操作</h4>
                 <ul>
-                    <li>用户A完成模型水印验证</li>
-                    <li>用户B导出检测报告</li>
-                    <li>管理员新增模型"llama-v2"</li>
+                    <li>完成模型水印验证</li>
+                    <li>导出检测报告</li>
+                    <li>对话 根据风景图生成诗意文案</li>
                 </ul>
             </div>
-            <div class="news-card">
-                <h4><i class="fas fa-shield-virus"></i> 安全日志</h4>
-                <ul>
-                    <li>检测到3次异常登录尝试</li>
-                    <li>模型"clip-v1"通过水印验证</li>
-                    <li>内容追踪无异常</li>
-                </ul>
+            <div class="info-card">
+                <h4><i class="fas fa-question-circle"></i> 帮助中心</h4>
+                <div class="help">常见问题、操作指南、技术支持与联系我们。</div>
             </div>
-        </div>
-        <!-- 统计数据区 -->
-        <div class="stats-section">
-            <div class="stat-card">
-                <div class="icon"><i class="fas fa-check-circle"></i></div>
-                <div class="stat-value">128</div>
-                <div class="stat-label">今日检测</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
-                <div class="stat-value" style="color:#ff9800;">3</div>
-                <div class="stat-label">异常告警</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon"><i class="fas fa-cube"></i></div>
-                <div class="stat-value">42</div>
-                <div class="stat-label">模型数量</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon"><i class="fas fa-users"></i></div>
-                <div class="stat-value">15</div>
-                <div class="stat-label">活跃用户</div>
-            </div>
-        </div>
-        <!-- 快捷入口区 -->
-        <div class="quick-section">
-            <div class="quick-card">
-                <div class="icon"><i class="fas fa-cogs"></i></div>
-                <div class="quick-label">模型管理</div>
-                <div class="quick-desc">管理和配置您的AI模型，支持导入、导出、删除等操作。</div>
-            </div>
-            <div class="quick-card">
-                <div class="icon"><i class="fas fa-file-alt"></i></div>
-                <div class="quick-label">内容管理</div>
-                <div class="quick-desc">管理生成内容，支持内容审核、追踪和导出。</div>
-            </div>
-            <div class="quick-card">
-                <div class="icon"><i class="fas fa-user-shield"></i></div>
-                <div class="quick-label">用户管理</div>
-                <div class="quick-desc">分配用户权限，管理账号安全，查看用户日志。</div>
-            </div>
-            <div class="quick-card">
-                <div class="icon"><i class="fas fa-question-circle"></i></div>
-                <div class="quick-label">帮助中心</div>
-                <div class="quick-desc">常见问题、操作指南、技术支持与联系我们。</div>
-            </div>
-        </div>
-        <!-- 功能卡片区 -->
-        <div class="card-section">
-            <div class="feature-card">
-                <div class="icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>模型水印验证</h3>
-                <p>对AI模型进行水印嵌入与验证，保护模型版权，防止非法复制与滥用。</p>
-                <button class="btn">开始验证</button>
-            </div>
-            <div class="feature-card">
-                <div class="icon"><i class="fas fa-file-alt"></i></div>
-                <h3>内容水印验证</h3>
-                <p>对生成内容进行水印检测，追踪内容来源，提升内容安全性与可追溯性。</p>
-                <button class="btn">内容验证</button>
-            </div>
-            <div class="feature-card">
-                <div class="icon"><i class="fas fa-image"></i></div>
-                <h3>图片水印验证</h3>
-                <p>上传图片进行水印检测，支持常见图片格式。</p>
-                <label class="upload-area" for="img-upload">
-                    <i class="fas fa-cloud-upload-alt"></i> 点击上传图片
-                    <input id="img-upload" type="file" accept="image/*" style="display:none;">
-                </label>
-                <img id="img-preview" class="preview" style="display:none;" />
-                <button class="btn" id="img-verify-btn" style="display:none;">图片验证</button>
-            </div>
-        </div>
-        <div class="footer">
-            &copy; 2025 VLM版权保护系统 | 联系方式：1600029360@qq.com
         </div>
     </div>
-    <script>
-        // 气泡动画（简单装饰）
-        const canvas = document.querySelector('.bubbles');
-        if (canvas) {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            const ctx = canvas.getContext('2d');
-            let bubbles = Array.from({ length: 18 }, () => ({
-                x: Math.random() * canvas.width,
-                y: canvas.height + Math.random() * canvas.height / 2,
-                r: 8 + Math.random() * 18,
-                s: 0.5 + Math.random() * 1.2,
-                o: 0.2 + Math.random() * 0.5
-            }));
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let b of bubbles) {
-                    ctx.globalAlpha = b.o;
-                    ctx.beginPath();
-                    ctx.arc(b.x, b.y, b.r, 0, 2 * Math.PI);
-                    ctx.fillStyle = '#fff';
-                    ctx.fill();
-                    b.y -= b.s;
-                    if (b.y < -b.r) {
-                        b.x = Math.random() * canvas.width;
-                        b.y = canvas.height + b.r;
-                        b.r = 8 + Math.random() * 18;
-                        b.s = 0.5 + Math.random() * 1.2;
-                        b.o = 0.2 + Math.random() * 0.5;
-                    }
-                }
-                ctx.globalAlpha = 1;
-                requestAnimationFrame(draw);
-            }
-            draw();
-        }
-        // 图片上传预览
-        const imgUpload = document.getElementById('img-upload');
-        const imgPreview = document.getElementById('img-preview');
-        const imgVerifyBtn = document.getElementById('img-verify-btn');
-        if (imgUpload) {
-            imgUpload.onchange = function (e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const url = URL.createObjectURL(file);
-                    imgPreview.src = url;
-                    imgPreview.style.display = 'block';
-                    imgVerifyBtn.style.display = 'inline-block';
-                } else {
-                    imgPreview.style.display = 'none';
-                    imgVerifyBtn.style.display = 'none';
-                }
-            };
-        }
-    </script>
+    <div class="stats-section">
+        <div class="stat-card">
+            <div class="icon"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-label">今日验证次数</div>
+            <div class="stat-value">15次</div>
+        </div>
+        <div class="stat-card">
+            <div class="icon"><i class="fas fa-cube"></i></div>
+            <div class="stat-label">模型数量</div>
+            <div class="stat-value">42个</div>
+        </div>
+        <div class="stat-card">
+            <div class="icon"><i class="fas fa-users"></i></div>
+            <div class="stat-label">活跃用户</div>
+            <div class="stat-value">15个</div>
+        </div>
+        <div class="stat-card">
+            <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="stat-label">异常告警</div>
+            <div class="stat-value" style="color:#ff9800;">3次</div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2025 图文溯源 面向视觉语言模型的多模态全过程水印系统 | 联系方式：1600029360@qq.com
+    </div>
 </body>
 
 </html>
