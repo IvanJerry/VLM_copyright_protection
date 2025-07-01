@@ -9,6 +9,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        body,
+        html {
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            font-weight: bold;
+        }
+
+        .fa,
+        [class^="fa-"],
+        i.fas,
+        i.far,
+        i.fab {
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+            font-style: normal !important;
+        }
+
         body {
             background: #f5f8fa;
         }
@@ -60,12 +76,45 @@
         }
 
         .top-nav .user-info {
-            color: #e0f7fa;
-            font-size: 1rem;
+            display: none;
+        }
+
+        .header-right .user-btn,
+        .nav-actions .user-btn {
+            background: #0a2a5c;
+            color: #fff;
+            border: 2px solid #00eaff;
+            border-radius: 16px;
+            padding: 4px 18px 4px 32px;
+            font-size: 1.1rem;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #00eaff22;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .header-right .user-btn i,
+        .nav-actions .user-btn i {
+            position: absolute;
+            left: 10px;
+            top: 7px;
+            color: #00eaff;
+            font-size: 1.2rem;
+        }
+
+        .top-nav .user-info:hover {
+            background: #00eaff;
+            color: #fff;
+        }
+
+        .top-nav .user-info:hover i {
+            color: #fff;
         }
 
         .sidebar {
-            background: linear-gradient(120deg, #005c97 60%, #363795 100%);
+            background: url('image/bg.png') no-repeat center center/cover;
             color: #fff;
             width: 240px;
             min-height: 100vh;
@@ -291,6 +340,11 @@
         .sidebar-history li:hover {
             background: #005c97;
         }
+
+        .content-section {
+            background: #eaf7ff;
+            padding: 32px;
+        }
     </style>
 </head>
 
@@ -305,7 +359,7 @@
             </select>
             <div class="nav-actions">
                 <a href="chat.html" class="monitor-btn">监控</a>
-                <div class="user-info">用户信息</div>
+                <button class="user-btn"><i class="fas fa-user-circle"></i>用户管理</button>
             </div>
         </header>
         <aside class="sidebar">
@@ -355,11 +409,7 @@
                     <div class="chat-row vlm">
                         <div class="chat-bubble vlm left-bubble">
                             <img class="avatar avatar-ai" src="image/AI.png" alt="AI">
-                            The image shows a group of people having a picnic in a park. There are baskets, food, and
-                            drinks
-                            on a blanket. The main activity is enjoying a meal together outdoors. Caption: "A joyful
-                            picnic
-                            in the sunny park."
+                            The image shows a group of people having a picnic in a park. There are baskets, food, and drinks on a blanket. The main activity is enjoying a meal together outdoors. Caption: "A joyful picnic in the sunny park."
                         </div>
                     </div>
                 </div>

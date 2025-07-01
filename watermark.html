@@ -81,7 +81,37 @@
         }
 
         .top-nav .user-info {
-            color: #e0f7fa;
+            display: none;
+        }
+
+        display: flex;
+        align-items: center;
+        border: 2px solid #00eaff;
+        border-radius: 24px;
+        background: #fff;
+        color: #00eaff;
+        font-size: 1.3rem;
+        font-weight: bold;
+        padding: 6px 22px 6px 16px;
+        margin-left: 12px;
+        transition: background 0.2s,
+        color 0.2s;
+        cursor: pointer;
+        }
+
+        .top-nav .user-info i {
+            color: #00eaff;
+            font-size: 1.6rem;
+            margin-right: 8px;
+        }
+
+        .top-nav .user-info:hover {
+            background: #00eaff;
+            color: #fff;
+        }
+
+        .top-nav .user-info:hover i {
+            color: #fff;
         }
 
         .sidebar {
@@ -412,6 +442,11 @@
         .sidebar-history li:hover {
             background: #005c97;
         }
+
+        .content-section {
+            background: #eaf7ff;
+            padding: 12px;
+        }
     </style>
 </head>
 
@@ -426,7 +461,7 @@
             </select>
             <div class="nav-actions">
                 <a href="chat.html" class="monitor-btn">监控</a>
-                <div class="user-info"><i class="fas fa-user-circle" style="margin-right:6px;"></i>用户信息</div>
+                <button class="user-btn"><i class="fas fa-user-circle"></i>用户管理</button>
             </div>
         </header>
         <aside class="sidebar">

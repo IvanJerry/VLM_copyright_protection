@@ -12,34 +12,15 @@
    ```
 3. 浏览器访问：http://localhost:5000
 
-4. 管理员界面
+4. 界面展示
 
 - 登录
-  ![示例图片](image/login.png)
+  ![示例图片](image/图文溯源_登录.png)
 - 注册
-  ![示例图片](image/register.png)
+  ![示例图片](image/图文溯源_注册.png)
 - 使用 VLM 进行 Q&A
-  ![示例图片](image/image1.png)
-- 模型切换
-  ![示例图片](image/image2.png)
-- 水印验证（针对内容）
-  ![示例图片](image/image3.png)
+  ![示例图片](image/图文溯源_模型服务.png)
+- 水印验证（针对推理阶段）
+  ![示例图片](image/图文溯源_模型保护.png)
 - 水印验证（针对模型）
-  ![示例图片](image/image3-1.png)
-- 水印设置
-  ![示例图片](image/image4.png)
-
-5. 普通用户界面
-
-- 使用 VLM 进行 Q&A
-  ![示例图片](image/multi_task_user.png)
-- 模型切换
-  ![示例图片](image/model_user.png)
-- 设置
-  ![示例图片](image/setting_user.png)
-
-## 说明
-
-- 目前仅为前端界面原型，后端接口未实现。
-- 颜色风格采用指定的 conic-gradient 渐变。
-- 结构参考需求文档，后续可根据功能完善交互和数据。
+  ![示例图片](image/图文溯源_内容保护.png)

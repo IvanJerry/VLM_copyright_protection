@@ -19,7 +19,7 @@
 
         .text-area {
             width: 100%;
-            min-height: 120px;
+            min-height: 60px;
             padding: 12px;
             border: 1px solid #eee;
             border-radius: 6px;
@@ -137,6 +137,7 @@
         }
 
         .content-section {
+            background: #eaf7ff;
             padding: 15px;
         }
 
@@ -191,8 +192,32 @@
         }
 
         .top-nav .user-info {
-            color: #e0f7fa;
-            font-size: 1.3rem;
+            display: none;
+        }
+
+        .header-right .user-btn,
+        .nav-actions .user-btn {
+            background: #0a2a5c;
+            color: #fff;
+            border: 2px solid #00eaff;
+            border-radius: 16px;
+            padding: 4px 18px 4px 32px;
+            font-size: 1.1rem;
+            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #00eaff22;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .header-right .user-btn i,
+        .nav-actions .user-btn i {
+            position: absolute;
+            left: 10px;
+            top: 7px;
+            color: #00eaff;
+            font-size: 1.2rem;
         }
 
         .sidebar {
@@ -291,6 +316,7 @@
         }
 
         .wm-highlight-text span {
+            font-size: 1rem;
             display: inline-block;
             margin-bottom: 4px;
             vertical-align: middle;
@@ -331,7 +357,7 @@
             </select>
             <div class="nav-actions">
                 <a href="chat.html" class="monitor-btn">监控</a>
-                <div class="user-info"><i class="fas fa-user-circle" style="margin-right:6px;"></i>用户信息</div>
+                <button class="user-btn"><i class="fas fa-user-circle"></i>用户管理</button>
             </div>
         </header>
         <aside class="sidebar">
