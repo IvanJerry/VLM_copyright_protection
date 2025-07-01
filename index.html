@@ -1,423 +1,305 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VLM版权保护系统 - 首页</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <title>图文溯源：面向视觉语言模型的多模态全过程水印系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @font-face {
-            font-family: '汉仪颜楷简';
-            src: local('汉仪颜楷简'), url('https://fonts.gstatic.com/s/notoserifsc/v16/ga6Iaw1J5X9T9RW6j9bNfFQ.woff2') format('woff2');
-            font-display: swap;
-        }
-
         body {
-            min-height: 100vh;
-            margin: 0;
-            background: #d6f2ff;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: 600;
-            font-size: 18px;
+            font-family: "宋体", SimSun, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
         }
 
-        .header {
-            background: #0a2a5c;
-            color: #fff;
-            padding: 0 2rem;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .logo {
-            font-size: 2.1rem;
-            font-weight: bold;
-            color: #00eaff;
-            letter-spacing: 2px;
-            text-shadow: 0 0 8px #00eaff88;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
-        }
-
-        .nav {
-            display: flex;
-            gap: 32px;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.3rem;
-            padding: 6px 18px;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
-        }
-
-        .nav a.active {
-            background: #00eaff;
-            color: #0a2a5c;
-            font-weight: bold;
-            box-shadow: 0 2px 8px #00eaff55;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .header-right .search {
-            background: #001848;
-            border: 2px solid #00eaff;
-            border-radius: 16px;
-            color: #fff;
-            padding: 6px 16px;
-            font-size: 1rem;
-            margin-right: 8px;
-            outline: none;
-        }
-
-        .header-right .user-btn {
-            background: #0a2a5c;
-            color: #fff;
-            border: 2px solid #00eaff;
-            border-radius: 16px;
-            padding: 4px 18px 4px 32px;
-            font-size: 1.1rem;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 2px 8px #00eaff22;
-            font-weight: bold;
-        }
-
-        .header-right .user-btn i {
-            position: absolute;
-            left: 10px;
-            top: 7px;
-            color: #00eaff;
-            font-size: 1.2rem;
-        }
-
-        .main {
-            max-width: 1800px;
-            margin: 32px auto 0 auto;
-            padding: 0 18px 32px 18px;
-            display: flex;
-            gap: 32px;
-        }
-
-        .left-panel {
-            flex: 2.2;
-            background: url('image/bg.png') center center/cover no-repeat;
-            border-radius: 36px;
-            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.10);
-            padding: 48px 32px 40px 32px;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 600px;
-        }
-
-        .left-panel h1 {
-            font-size: 2.8rem;
-            font-weight: bold;
-            margin-bottom: 18px;
-            letter-spacing: 2px;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
-        }
-
-        .model-select-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 18px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .model-select {
-            background: #111c2e;
-            color: #fff;
-            border: 2px solid #00eaff;
-            border-radius: 8px;
-            font-size: 1.4rem;
-            padding: 8px 32px 8px 18px;
-            margin-right: 18px;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            min-width: 120px;
-            font-weight: bold;
-        }
-
-        .left-panel .tip {
-            font-size: 1.1rem;
-            opacity: 0.85;
-            margin-bottom: 18px;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
-        }
-
-        .banner-btns {
-            margin-top: 18px;
-            display: flex;
-            gap: 28px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .banner-btns button {
-            font-size: 1.4rem;
-            padding: 10px 48px;
-            border-radius: 24px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            box-shadow: 0 2px 8px #00eaff33;
-        }
-
-        .banner-btns .primary {
-            background: #00eaff;
-            color: #0a2a5c;
-        }
-
-        .banner-btns .primary:disabled {
-            background: #b2ebf2;
-            color: #888;
-        }
-
-        .banner-btns .secondary {
-            background: #fff;
-            color: #0a2a5c;
-        }
-
-        .banner-btns .secondary:disabled {
-            background: #eee;
-            color: #aaa;
-        }
-
-        .banner-btns .dialog {
-            background: #0a2a5c;
-            color: #fff;
-        }
-
-        .left-panel .desc {
-            margin-top: 32px;
-            font-size: 1.25rem;
-            line-height: 2.1;
-            letter-spacing: 0.5px;
-            text-align: left;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
-        }
-
-        .right-panel {
-            flex: 1.2;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            min-width: 420px;
-        }
-
-        .info-card {
-            background: #eaf7ff;
-            border-radius: 18px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-            padding: 22px 32px 18px 32px;
-            color: #0a2a5c;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
-            line-height: 1.4;
-        }
-
-        .info-card h4 {
-            font-size: 1.35rem;
-            font-weight: bold;
-            margin: 2px 0 4px 0;
-            color: #00b8d9;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .info-card ul {
-            padding-left: 18px;
-            margin: 0;
-        }
-
-        .info-card li {
-            font-size: 1.18rem;
-            margin-bottom: 6px;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
-        }
-
-        .info-card .help {
-            color: #00b8d9;
-            font-weight: bold;
-        }
-
-        .stats-section {
-            display: flex;
-            gap: 24px;
-            margin: 6px 0 0 0;
-            flex-wrap: wrap;
-        }
-
-        .stat-card {
-            flex: 1 1 180px;
-            background: #eaf7ff;
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            padding: 24px 18px 18px 18px;
-            color: #0a2a5c;
-            min-width: 160px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
-        }
-
-        .stat-card .icon {
-            font-size: 2.1rem;
-            color: #00eaff;
-            margin-bottom: 8px;
-        }
-
-        .stat-card .stat-value {
-            font-size: 2.4rem;
-            font-weight: bold;
-            color: #ff9800;
-            margin-bottom: 4px;
-        }
-
-        .stat-card .stat-label {
-            font-size: 1.3rem;
-            color: #0a2a5c;
-            font-weight: bold;
-        }
-
-        .footer {
+        header {
             text-align: center;
-            color: #aaa;
-            font-size: 0.98rem;
-            padding: 18px 0 8px 0;
-            margin-top: 12px;
-            font-family: '楷体', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
-            font-weight: bold;
+            padding: 30px 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
-        @media (max-width: 1100px) {
-            .main {
-                flex-direction: column;
-                gap: 18px;
-            }
+        h1,
+        h2,
+        h3 {
+            color: #1a5276;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            position: relative;
+            padding-left: 10px;
+        }
 
-            .left-panel,
-            .right-panel {
-                min-width: unset;
-            }
+        h1 {
+            font-size: 2.2em;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+        }
 
-            .stats-section {
-                flex-direction: column;
-                gap: 12px;
-            }
+        h2:before {
+            content: "🔍";
+            margin-right: 10px;
+        }
+
+        h3:before {
+            content: "📌";
+            margin-right: 8px;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-box {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #f0f7ff;
+            transition: transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 1.8em;
+            color: #3498db;
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tech-table th,
+        .tech-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .tech-table th {
+            background-color: #e8f4f8;
+            color: #2c3e50;
+        }
+
+        .tech-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .application-card {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .application-card i {
+            color: #f39c12;
+            margin-right: 10px;
+        }
+
+        .result-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .result-list li {
+            background-color: #e8f5e9;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .result-list i {
+            color: #2ecc71;
+            margin-right: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .contact-info i {
+            color: #9b59b6;
+            margin-right: 12px;
+            min-width: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9em;
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <span class="logo">图文溯源</span>
-        <nav class="nav">
-            <a href="#" class="active">首页</a>
-            <a href="#">模型服务</a>
-            <a href="#">模型管理</a>
-            <a href="#">水印管理</a>
-            <a href="#">设置</a>
-        </nav>
-        <div class="header-right">
-            <input class="search" type="text" placeholder="搜索...">
-            <button class="user-btn"><i class="fas fa-user-circle"></i>用户管理</button>
+    <header>
+        <h1>图文溯源：面向视觉语言模型的多模态全过程水印系统</h1>
+        <p>2025年全国大学生信息安全竞赛参赛作品</p>
+    </header>
+
+    <div class="section">
+        <h2>项目概述</h2>
+        <p><i class="fas fa-lightbulb"></i>
+            视觉语言模型（VLMs）在跨模态理解与生成领域展现巨大潜力，但模型窃取、内容盗用等侵权行为频发。本系统通过构建跨模态图文水印方案，实现覆盖训练到推理的全过程版权保护，兼顾安全性、隐蔽性与可追溯性。</p>
+        <p><i class="fas fa-shield-alt"></i>
+            系统创新性地设计"提示-图像"双密钥触发机制，在训练阶段增强图文特征一致性，在推理阶段通过熵感知技术嵌入身份信息，有效解决单模态水印适配性差、容量有限等问题。</p>
+    </div>
+
+    <div class="section">
+        <h2>核心功能模块</h2>
+
+        <h3>训练阶段：模型水印版权保护</h3>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-image"></i></div>
+            <div>
+                <strong>可逆网络水印生成</strong>
+                <p>基于离散小波变换（DWT）的鲁棒可逆网络，将秘密图像嵌入正常图像高频域，实现视觉无损嵌入与精准恢复，水印图像与原图视觉差异极小（PSNR达37dB以上）。</p>
+            </div>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-key"></i></div>
+            <div>
+                <strong>双密钥触发机制</strong>
+                <p>构建"提示文本+水印图像"双触发框架，仅在双重条件满足时激活水印响应，单一模态触发无效，极大提升破解难度与系统安全性。</p>
+            </div>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+            <div>
+                <strong>多梯度优化嵌入</strong>
+                <p>通过多梯度下降算法平衡效用损失（保证正常任务性能）、多触发器损失（提升双触发有效性）与单触发器损失（避免误激活），实现水印与模型性能的最优平衡。</p>
+            </div>
+        </div>
+
+        <h3>推理阶段：生成内容水印版权保护</h3>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <div>
+                <strong>熵感知动态嵌入</strong>
+                <p>实时分析文本生成的词元分布熵值，在高熵区域（模型选择空间大）嵌入更多比特信息，在低熵区域（语义敏感）减少嵌入，兼顾容量与文本自然性。</p>
+            </div>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-code"></i></div>
+            <div>
+                <strong>多比特编码机制</strong>
+                <p>突破传统单比特限制，采用多列表编码策略，单位置可嵌入多比特信息，容量提升2-4倍，可承载用户ID、时间戳等精细身份信息，实现精准溯源。</p>
+            </div>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+            <div>
+                <strong>鲁棒验证系统</strong>
+                <p>通过感知哈希与伪随机数生成器重构验证环境，从生成内容中提取水印序列，计算匹配度与汉明距离，实现高准确率的版权验证（准确率提升2%-16%）。</p>
+            </div>
         </div>
     </div>
-    <div class="main">
-        <div class="left-panel">
-            <h1>VLM版权保护系统</h1>
-            <div class="model-select-row">
-                <select class="model-select">
-                    <option>BLIP</option>
-                </select>
-                <span class="tip">请选择模型进行验证或管理</span>
-            </div>
-            <div class="banner-btns">
-                <button class="primary">开始验证</button>
-                <button class="secondary" disabled>模型管理</button>
-                <button class="dialog" disabled>开始对话</button>
-            </div>
-            <div class="desc">
-                欢迎使用「图文溯源系统」！本系统为视觉语言模型提供多模态图文水印解决方案，通过训练阶段的水印嵌入防止模型盗用与篡改，以及推理阶段的生成内容水印溯源，构建全过程版权保护体系。
-            </div>
+
+    <div class="section">
+        <h2>技术优势</h2>
+        <table class="tech-table">
+            <tr>
+                <th>优势特性</th>
+                <th>技术细节</th>
+                <th>效果指标</th>
+            </tr>
+            <tr>
+                <td><i class="fas fa-exchange-alt"></i> 跨模态有效性</td>
+                <td>图文水印协同响应，保障跨模态一致性</td>
+                <td>双触发激活率>99%，单触发误激活率<1%< /td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-lock"></i> 全过程安全性</td>
+                <td>覆盖训练与推理全生命周期，抗微调/剪枝攻击</td>
+                <td>微调后水印保持率>97%，对抗攻击干扰降低70%</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-eye-slash"></i> 高隐蔽性</td>
+                <td>高频域嵌入+熵感知策略，减少视觉/语义干扰</td>
+                <td>图像SSIM>0.93，文本困惑度低至6.5-10.7</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-expand-arrows-alt"></i> 多框架兼容</td>
+                <td>适配CLIP、BLIP等主流视觉语言模型架构</td>
+                <td>支持图文匹配、图像问答等多任务场景</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>应用场景</h2>
+        <div class="application-card">
+            <p><i class="fas fa-certificate"></i>
+                <strong>信息防伪</strong>：为重要文件、证照、音视频内容添加隐蔽水印，防止篡改、伪造或恶意传播，适用于政府、公证、金融等领域。
+            </p>
         </div>
-        <div class="right-panel">
-            <div class="info-card">
-                <h4><i class="fas fa-bullhorn"></i> 系统公告</h4>
-                <ul>
-                    <li>2025-06-28 新增模型批量导入功能</li>
-                    <li>2025-06-28 支持内容水印一键验证</li>
-                    <li>2025-06-28 系统安全加固升级</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4><i class="fas fa-history"></i> 最近操作</h4>
-                <ul>
-                    <li>完成模型水印验证</li>
-                    <li>导出检测报告</li>
-                    <li>对话 根据风景图生成诗意文案</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4><i class="fas fa-question-circle"></i> 帮助中心</h4>
-                <div class="help">常见问题、操作指南、技术支持与联系我们。</div>
-            </div>
+        <div class="application-card">
+            <p><i class="fas fa-copyright"></i> <strong>版权追踪溯源</strong>：明确内容生成来源，维护模型开发者与创作者合法权益，助力文化创意产业建立清晰权属关系。</p>
+        </div>
+        <div class="application-card">
+            <p><i class="fas fa-gavel"></i> <strong>盗版保护</strong>：提供内容与模型层级的双重取证能力，在图文被非法转载/篡改时识别水印痕迹，形成侵权证据链。</p>
+        </div>
+        <div class="application-card">
+            <p><i class="fas fa-bullhorn"></i> <strong>AI生成内容监管</strong>：实现机器生成文本/图像的自动识别与追责，遏制虚假信息、深度伪造内容传播。</p>
         </div>
     </div>
-    <div class="stats-section">
-        <div class="stat-card">
-            <div class="icon"><i class="fas fa-check-circle"></i></div>
-            <div class="stat-label">今日验证次数</div>
-            <div class="stat-value">15次</div>
+
+    <div class="section">
+        <h2>实验效果</h2>
+        <ul class="result-list">
+            <li><i class="fas fa-trophy"></i> 训练阶段：在微调、剪枝等攻击下水印保持率超97%，对抗攻击干扰能力提升70%以上，PSNR达37dB以上。</li>
+            <li><i class="fas fa-trophy"></i> 推理阶段：水印容量提升2-4倍，检测准确率提高2%-16%，隐蔽性增强5-13倍，实现精准身份追踪。</li>
+            <li><i class="fas fa-trophy"></i> 跨场景泛化：在零样本测试中水印激活率接近100%，适配CLIP、BLIP等主流模型架构。</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>联系信息</h2>
+        <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <p>电子邮箱：2798964744@qq.com</p>
         </div>
-        <div class="stat-card">
-            <div class="icon"><i class="fas fa-cube"></i></div>
-            <div class="stat-label">模型数量</div>
-            <div class="stat-value">42个</div>
+        <div class="contact-info">
+            <i class="fas fa-calendar"></i>
+            <p>提交日期：7月1日</p>
         </div>
-        <div class="stat-card">
-            <div class="icon"><i class="fas fa-users"></i></div>
-            <div class="stat-label">活跃用户</div>
-            <div class="stat-value">15个</div>
-        </div>
-        <div class="stat-card">
-            <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
-            <div class="stat-label">异常告警</div>
-            <div class="stat-value" style="color:#ff9800;">3次</div>
+        <div class="contact-info">
+            <i class="fas fa-file-pdf"></i>
+            <p>参考文档：2025年全国大学生信息安全竞赛_7_1第一版.pdf</p>
         </div>
     </div>
-    <div class="footer">
-        &copy; 2025 图文溯源 面向视觉语言模型的多模态全过程水印系统 | 联系方式：1600029360@qq.com
-    </div>
+
+    <footer>
+        <p>© 2025 图文溯源项目组 | 全国大学生信息安全竞赛参赛作品</p>
+    </footer>
 </body>
 
 </html>
