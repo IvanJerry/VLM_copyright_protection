@@ -41,11 +41,17 @@
         }
 
         .top-nav .logo {
-            font-size: 1.6rem;
+            font-size: 2.2rem;
             font-weight: bold;
             color: #00eaff;
             letter-spacing: 2px;
             text-shadow: 0 0 8px #00eaff88;
+        }
+
+        .top-nav .model-select,
+        .top-nav .monitor-btn,
+        .top-nav .user-info {
+            font-size: 1.3rem;
         }
 
         .top-nav .model-select {
@@ -53,7 +59,6 @@
             color: #fff;
             border: none;
             border-radius: 8px;
-            font-size: 1.1rem;
             padding: 6px 18px;
             margin-right: 18px;
         }
@@ -77,7 +82,6 @@
 
         .top-nav .user-info {
             color: #e0f7fa;
-            font-size: 1rem;
         }
 
         .sidebar {
@@ -258,8 +262,10 @@
             gap: 8px;
         }
 
-        .content-section {
-            padding: 12px;
+        .content-section,
+        .content-wrapper,
+        .content-section * {
+            font-size: 1.18rem;
         }
 
         img {
@@ -420,7 +426,7 @@
             </select>
             <div class="nav-actions">
                 <a href="chat.html" class="monitor-btn">监控</a>
-                <div class="user-info">用户信息</div>
+                <div class="user-info"><i class="fas fa-user-circle" style="margin-right:6px;"></i>用户信息</div>
             </div>
         </header>
         <aside class="sidebar">
