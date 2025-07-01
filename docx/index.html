@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图文溯源：面向视觉语言模型的多模态全过程水印系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "宋体", SimSun, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #1a5276;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+        }
+
+        h2:before {
+            content: "🔍";
+            margin-right: 10px;
+        }
+
+        h3:before {
+            content: "📌";
+            margin-right: 8px;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-box {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #f0f7ff;
+            transition: transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 1.8em;
+            color: #3498db;
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tech-table th,
+        .tech-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .tech-table th {
+            background-color: #e8f4f8;
+            color: #2c3e50;
+        }
+
+        .tech-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .application-card {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .application-card i {
+            color: #f39c12;
+            margin-right: 10px;
+        }
+
+        .result-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .result-list li {
+            background-color: #e8f5e9;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .result-list i {
+            color: #2ecc71;
+            margin-right: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .contact-info i {
+            color: #9b59b6;
+            margin-right: 12px;
+            min-width: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>图文溯源：面向视觉语言模型的多模态全过程水印系统</h1>
+        <p>2025年全国大学生信息安全竞赛参赛作品</p>
+    </header>
+
+    <div class="section">
+        <h2>项目概述</h2>
+        <p><i class="fas fa-lightbulb"></i>
+            视觉语言模型（VLMs）在跨模态理解与生成领域展现巨大潜力，但模型窃取、内容盗用等侵权行为频发。本系统通过构建跨模态图文水印方案，实现覆盖训练到推理的全过程版权保护，兼顾安全性、隐蔽性与可追溯性。</p>
+        <p><i class="fas fa-shield-alt"></i>
+            系统创新性地设计"提示-图像"双密钥触发机制，在训练阶段增强图文特征一致性，在推理阶段通过熵感知技术嵌入身份信息，有效解决单模态水印适配性差、容量有限等问题。</p>
+    </div>
+
+    <div class="section">
+        <h2>核心功能模块</h2>
+
+        <h3>训练阶段：模型水印版权保护</h3>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-image"></i></div>
+            <div>
+                <strong>可逆网络水印生成</strong>
+                <p>基于离散小波变换（DWT）的鲁棒可逆网络，将秘密图像嵌入正常图像高频域，实现视觉无损嵌入与精准恢复，水印图像与原图视觉差异极小（PSNR达37dB以上）。</p>
+            </div>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-key"></i></div>
+            <div>
+                <strong>双密钥触发机制</strong>
+                <p>构建"提示文本+水印图像"双触发框架，仅在双重条件满足时激活水印响应，单一模态触发无效，极大提升破解难度与系统安全性。</p>
+            </div>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+            <div>
+                <strong>多梯度优化嵌入</strong>
+                <p>通过多梯度下降算法平衡效用损失（保证正常任务性能）、多触发器损失（提升双触发有效性）与单触发器损失（避免误激活），实现水印与模型性能的最优平衡。</p>
+            </div>
+        </div>
+
+        <h3>推理阶段：生成内容水印版权保护</h3>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <div>
+                <strong>熵感知动态嵌入</strong>
+                <p>实时分析文本生成的词元分布熵值，在高熵区域（模型选择空间大）嵌入更多比特信息，在低熵区域（语义敏感）减少嵌入，兼顾容量与文本自然性。</p>
+            </div>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-code"></i></div>
+            <div>
+                <strong>多比特编码机制</strong>
+                <p>突破传统单比特限制，采用多列表编码策略，单位置可嵌入多比特信息，容量提升2-4倍，可承载用户ID、时间戳等精细身份信息，实现精准溯源。</p>
+            </div>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+            <div>
+                <strong>鲁棒验证系统</strong>
+                <p>通过感知哈希与伪随机数生成器重构验证环境，从生成内容中提取水印序列，计算匹配度与汉明距离，实现高准确率的版权验证（准确率提升2%-16%）。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>技术优势</h2>
+        <table class="tech-table">
+            <tr>
+                <th>优势特性</th>
+                <th>技术细节</th>
+                <th>效果指标</th>
+            </tr>
+            <tr>
+                <td><i class="fas fa-exchange-alt"></i> 跨模态有效性</td>
+                <td>图文水印协同响应，保障跨模态一致性</td>
+                <td>双触发激活率>99%，单触发误激活率<1%< /td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-lock"></i> 全过程安全性</td>
+                <td>覆盖训练与推理全生命周期，抗微调/剪枝攻击</td>
+                <td>微调后水印保持率>97%，对抗攻击干扰降低70%</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-eye-slash"></i> 高隐蔽性</td>
+                <td>高频域嵌入+熵感知策略，减少视觉/语义干扰</td>
+                <td>图像SSIM>0.93，文本困惑度低至6.5-10.7</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-expand-arrows-alt"></i> 多框架兼容</td>
+                <td>适配CLIP、BLIP等主流视觉语言模型架构</td>
+                <td>支持图文匹配、图像问答等多任务场景</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>应用场景</h2>
+        <div class="application-card">
+            <p><i class="fas fa-certificate"></i>
+                <strong>信息防伪</strong>：为重要文件、证照、音视频内容添加隐蔽水印，防止篡改、伪造或恶意传播，适用于政府、公证、金融等领域。</p>
+        </div>
+        <div class="application-card">
+            <p><i class="fas fa-copyright"></i> <strong>版权追踪溯源</strong>：明确内容生成来源，维护模型开发者与创作者合法权益，助力文化创意产业建立清晰权属关系。</p>
+        </div>
+        <div class="application-card">
+            <p><i class="fas fa-gavel"></i> <strong>盗版保护</strong>：提供内容与模型层级的双重取证能力，在图文被非法转载/篡改时识别水印痕迹，形成侵权证据链。</p>
+        </div>
+        <div class="application-card">
+            <p><i class="fas fa-bullhorn"></i> <strong>AI生成内容监管</strong>：实现机器生成文本/图像的自动识别与追责，遏制虚假信息、深度伪造内容传播。</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>实验效果</h2>
+        <ul class="result-list">
+            <li><i class="fas fa-trophy"></i> 训练阶段：在微调、剪枝等攻击下水印保持率超97%，对抗攻击干扰能力提升70%以上，PSNR达37dB以上。</li>
+            <li><i class="fas fa-trophy"></i> 推理阶段：水印容量提升2-4倍，检测准确率提高2%-16%，隐蔽性增强5-13倍，实现精准身份追踪。</li>
+            <li><i class="fas fa-trophy"></i> 跨场景泛化：在零样本测试中水印激活率接近100%，适配CLIP、BLIP等主流模型架构。</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>联系信息</h2>
+        <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <p>电子邮箱：2798964744@qq.com</p>
+        </div>
+        <div class="contact-info">
+            <i class="fas fa-calendar"></i>
+            <p>提交日期：7月1日</p>
+        </div>
+        <div class="contact-info">
+            <i class="fas fa-file-pdf"></i>
+            <p>参考文档：2025年全国大学生信息安全竞赛_7_1第一版.pdf</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 图文溯源项目组 | 全国大学生信息安全竞赛参赛作品</p>
+    </footer>
+</body>
+
+</html>
