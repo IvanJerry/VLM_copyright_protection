@@ -26,7 +26,7 @@
    ```bash
    pip install -r requirements.txt
    ```
-2. 启动后端（仅用于前端静态页面展示）：
+2. 启动后端：
    ```bash
    python app.py
    ```
@@ -56,4 +56,6 @@
 
 ---
 
-> 如需技术支持或有建议，欢迎联系：1600029360@qq.com
+![系统演示](gif/gif .gif)
+
+> 如有建议，欢迎联系：1600029360@qq.com
